@@ -42,7 +42,7 @@ const axiosBaseQuery =
 export const bookApi = createApi({
   reducerPath: "bookApi",
   baseQuery: axiosBaseQuery({
-    baseUrl: "https://maca-v2-server.herokuapp.com/",
+    baseUrl: "https://maca-v2-server.herokuapp.com/api/v1/",
   }),
   tagTypes: ["Book"],
   endpoints: ({ query, mutation }) => ({
