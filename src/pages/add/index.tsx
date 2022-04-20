@@ -20,10 +20,6 @@ import {
 } from "../../app/services/book";
 import { Formik, Form, Field, FormikProps, ErrorMessage } from "formik";
 import { boolean, object, string } from "yup";
-import {
-  isErrorWithMessage,
-  isFetchBaseQueryError,
-} from "../../app/services/helper";
 
 type InitialValues = {
   title: string;
@@ -36,7 +32,7 @@ const Add: FC<{}> = (): JSX.Element => {
   const router = useRouter(),
     toast = useToast();
 
-  const { data = [], isLoading, isFetching } = useReadAllBooksQuery("", {}),
+  const { data = [], isLoading, isFetching } = useReadAllBooksQuery(""),
     [createBook] = useCreateBookMutation();
 
   const initialValues: InitialValues = {
@@ -84,11 +80,6 @@ const Add: FC<{}> = (): JSX.Element => {
           setSubmitting(false);
           resetForm();
         }, 1000);
-
-        // setTimeout(
-        //   () => router.push(`/${values.is_completed ? "finished" : "reading"}`),
-        //   5000
-        // );
       }}
     >
       {({ isSubmitting }: any) => {
