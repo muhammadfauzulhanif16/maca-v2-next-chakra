@@ -95,7 +95,10 @@ const Home: NextPage = (): JSX.Element => {
           base: "repeat(1, 1fr)",
           lg: "repeat(3, 1fr)",
         }}
-        gap={10}
+        gap={{
+          base: 4,
+          lg: 8,
+        }}
       >
         {overviewList.map(({ icon, label, amount }, id: number) => (
           <GridItem

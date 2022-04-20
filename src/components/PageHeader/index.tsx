@@ -51,9 +51,13 @@ export const PageHeader: FC<PageHeaderProps> = ({
         base: 4,
         lg: 0,
       }}
-      display="flex"
+      display={{
+        base: "grid",
+        lg: "flex",
+      }}
       justifyContent="space-between"
-      gridTemplateColumns="repeat(1, 1fr)"
+      gridTemplateColumns="repeat(2, 1fr)"
+      gap={4}
     >
       <Box>
         <Box pos="relative">
@@ -76,31 +80,33 @@ export const PageHeader: FC<PageHeaderProps> = ({
         <Text color={gray["400-500"]}>{description}</Text>
       </Box>
 
-      <IconButton
-        as={buttonIcon}
-        isLoading={isLoading}
-        text={buttonText}
-        buttonProps={{
-          type: buttonType,
-          disabled: isLoading,
-          bgColor: cyan["300-600"],
-          _hover: {
-            bgColor: cyan["200-800"],
-          },
-          w: 40,
-          onClick: () =>
-            router.push(
-              buttonText === "Add" ? `/${buttonText.toLowerCase()}` : ""
-            ),
-        }}
-        textProps={{
-          ml: 4,
-        }}
-        iconProps={{
-          w: 6,
-          h: 6,
-        }}
-      />
+      <Box display="flex" justifyContent="end">
+        <IconButton
+          as={buttonIcon}
+          isLoading={isLoading}
+          text={buttonText}
+          buttonProps={{
+            type: buttonType,
+            disabled: isLoading,
+            bgColor: cyan["300-600"],
+            _hover: {
+              bgColor: cyan["200-800"],
+            },
+            w: 40,
+            onClick: () =>
+              router.push(
+                buttonText === "Add" ? `/${buttonText.toLowerCase()}` : ""
+              ),
+          }}
+          textProps={{
+            ml: 4,
+          }}
+          iconProps={{
+            w: 6,
+            h: 6,
+          }}
+        />
+      </Box>
     </GridItem>
   );
 };

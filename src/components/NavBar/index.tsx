@@ -33,7 +33,10 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
         base: "100vw",
         lg: "max",
       }}
-      p={2}
+      p={{
+        base: 4,
+        lg: 2,
+      }}
     >
       <Flex
         direction="column"
