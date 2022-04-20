@@ -102,6 +102,8 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
               h: 6,
             }}
             buttonProps={{
+              display: "flex",
+              flexDirection: "column",
               p: 0,
               variant: "ghost",
               _hover: {
@@ -113,16 +115,16 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
                   title === "Dashboard" ? "/" : `/${title.toLowerCase()}`
                 ),
             }}
-            // tooltipProps={{
-            //   placement: "right",
-            //   label:
-            //     title === "Dashboard"
-            //       ? title
-            //       : title === "Add"
-            //       ? `${title} book`
-            //       : `${title} list`,
-            //   children: null,
-            // }}
+            tooltipProps={{
+              placement: "top",
+              label:
+                title === "Dashboard"
+                  ? title
+                  : title === "Add"
+                  ? `${title} book`
+                  : `${title} list`,
+              children: null,
+            }}
           />
         ))}
       </Grid>
