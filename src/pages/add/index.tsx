@@ -111,12 +111,18 @@ const Add: FC<{}> = (): JSX.Element => {
 
                       <FormLabel htmlFor="title">Title</FormLabel>
 
-                      <Flex justifyContent="space-between">
+                      <Grid templateColumns="repeat(2, 1fr)">
                         <FormHelperText>
                           Keep reading books with interesting titles.
                         </FormHelperText>
-                        <FormErrorMessage>{error}</FormErrorMessage>
-                      </Flex>
+                        <FormErrorMessage
+                          display="flex"
+                          justifyContent="end"
+                          alignItems="start"
+                        >
+                          {error}
+                        </FormErrorMessage>
+                      </Grid>
                     </FormControl>
                   )}
                 </Field>
@@ -137,12 +143,18 @@ const Add: FC<{}> = (): JSX.Element => {
 
                       <FormLabel htmlFor="author">Author</FormLabel>
 
-                      <Flex justifyContent="space-between">
+                      <Grid templateColumns="repeat(2, 1fr)">
                         <FormHelperText>
                           Great person who made this book.
                         </FormHelperText>
-                        <FormErrorMessage>{error}</FormErrorMessage>
-                      </Flex>
+                        <FormErrorMessage
+                          display="flex"
+                          justifyContent="end"
+                          alignItems="start"
+                        >
+                          {error}
+                        </FormErrorMessage>
+                      </Grid>
                     </FormControl>
                   )}
                 </Field>
@@ -164,10 +176,16 @@ const Add: FC<{}> = (): JSX.Element => {
 
                       <FormLabel htmlFor="published">Published</FormLabel>
 
-                      <Flex justifyContent="space-between">
+                      <Grid templateColumns="repeat(2, 1fr)">
                         <FormHelperText>Book publishing time.</FormHelperText>
-                        <FormErrorMessage>{error}</FormErrorMessage>
-                      </Flex>
+                        <FormErrorMessage
+                          display="flex"
+                          justifyContent="end"
+                          alignItems="start"
+                        >
+                          {error}
+                        </FormErrorMessage>
+                      </Grid>
                     </FormControl>
                   )}
                 </Field>
