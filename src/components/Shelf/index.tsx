@@ -29,7 +29,6 @@ import {
 } from "../../app/services/book";
 import { Layout } from "../../components/Layout";
 import { Add, DismissSquare } from "@emotion-icons/fluentui-system-regular";
-import { Modal } from "../Modal";
 
 interface ShelfProps {
   titlePage: string;
@@ -128,8 +127,6 @@ export const Shelf: FC<ShelfProps> = ({
       buttonText="Add"
       amount={data.length}
     >
-      {/* <Modal /> */}
-
       {isError && (
         <IconButton
           as={DismissSquare}
