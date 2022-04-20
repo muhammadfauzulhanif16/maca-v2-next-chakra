@@ -266,7 +266,7 @@ export const Shelf: FC<ShelfProps> = ({
                             }}
                           />
 
-                          <IconButton
+                          {/* <IconButton
                             as={Edit}
                             iconProps={{
                               w: 6,
@@ -285,7 +285,7 @@ export const Shelf: FC<ShelfProps> = ({
                               children: null,
                               label: "Edit?",
                             }}
-                          />
+                          /> */}
 
                           <IconButton
                             as={Delete}
