@@ -33,9 +33,12 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
         base: "100vw",
         lg: "max",
       }}
-      p={{
+      px={{
         base: 4,
         lg: 2,
+      }}
+      py={{
+        base: 2,
       }}
     >
       <Flex
@@ -88,7 +91,7 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
         w="100vw"
         display={{ base: "grid", lg: "none" }}
         templateColumns="repeat(4, 1fr)"
-        gap={4}
+        gap={2}
       >
         {NavList.map(({ icon, title }: NavListState, id: number) => (
           <IconButton
