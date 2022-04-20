@@ -97,6 +97,10 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
           <IconButton
             key={id}
             as={icon}
+            text={title}
+            textProps={{
+              fontSize: "xs",
+            }}
             iconProps={{
               w: 6,
               h: 6,
@@ -115,16 +119,16 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
                   title === "Dashboard" ? "/" : `/${title.toLowerCase()}`
                 ),
             }}
-            tooltipProps={{
-              placement: "top",
-              label:
-                title === "Dashboard"
-                  ? title
-                  : title === "Add"
-                  ? `${title} book`
-                  : `${title} list`,
-              children: null,
-            }}
+            // tooltipProps={{
+            //   placement: "top",
+            //   label:
+            //     title === "Dashboard"
+            //       ? title
+            //       : title === "Add"
+            //       ? `${title} book`
+            //       : `${title} list`,
+            //   children: null,
+            // }}
           />
         ))}
       </Grid>
