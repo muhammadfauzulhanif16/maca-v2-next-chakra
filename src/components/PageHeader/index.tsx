@@ -43,6 +43,14 @@ export const PageHeader: FC<PageHeaderProps> = ({
 
   return (
     <GridItem
+      mx={{
+        base: 4,
+        lg: 0,
+      }}
+      mt={{
+        base: 4,
+        lg: 0,
+      }}
       display="flex"
       justifyContent="space-between"
       gridTemplateColumns="repeat(1, 1fr)"

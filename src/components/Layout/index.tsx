@@ -43,7 +43,7 @@ export const Layout: FC<LayoutProps> = ({
     };
 
   return (
-    <Flex bgColor={gray["50-900"]} color={gray["900-50"]}>
+    <Flex bgColor={gray["50-900"]} color={gray["900-50"]} h="100vh">
       <Head>
         <title>
           {`${
@@ -56,9 +56,19 @@ export const Layout: FC<LayoutProps> = ({
         </title>
       </Head>
 
-      <NavBar titlePage={titlePage} />
+      <Box display={{ base: "none", lg: "flex" }}>
+        <NavBar titlePage={titlePage} />
+      </Box>
 
-      <Grid m={10} templateRows="repeat(5, 1fr)" gap={10} w="full">
+      <Grid
+        m={{
+          base: 0,
+          lg: 8,
+        }}
+        templateRows="repeat(5, 1fr)"
+        gap={8}
+        w="full"
+      >
         <PageHeader
           buttonType={buttonType}
           pageHeaderTitle={titlePage}
@@ -79,8 +89,24 @@ export const Layout: FC<LayoutProps> = ({
             <Spinner size="xl" color={cyan["300-600"]} thickness="4px" />
           </GridItem>
         ) : (
-          <GridItem rowSpan={4}>{children}</GridItem>
+          <GridItem
+            rowSpan={4}
+            mx={{
+              base: 4,
+              lg: 0,
+            }}
+            mb={{
+              base: 4,
+              lg: 0,
+            }}
+          >
+            {children}
+          </GridItem>
         )}
+
+        <Box display={{ base: "flex", lg: "none" }}>
+          <NavBar titlePage={titlePage} />
+        </Box>
       </Grid>
     </Flex>
   );

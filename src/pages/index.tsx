@@ -90,7 +90,13 @@ const Home: NextPage = (): JSX.Element => {
       buttonIcon={Add}
       buttonText="Add"
     >
-      <Grid templateColumns="repeat(3, 1fr)" gap={10}>
+      <Grid
+        templateColumns={{
+          base: "repeat(1, 1fr)",
+          lg: "repeat(3, 1fr)",
+        }}
+        gap={10}
+      >
         {overviewList.map(({ icon, label, amount }, id: number) => (
           <GridItem
             key={id}

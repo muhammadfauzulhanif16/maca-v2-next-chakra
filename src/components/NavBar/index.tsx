@@ -1,4 +1,4 @@
-import { Grid, Flex, useColorModeValue } from "@chakra-ui/react";
+import { Grid, Flex, useColorModeValue, Box } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FC } from "react";
 import { Theme } from "../Theme";
@@ -21,18 +21,72 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
 
   return (
     <Flex
-      h="100vh"
-      alignItems="center"
-      justifyContent="space-around"
+      h={{
+        base: "max",
+        lg: "100vh",
+      }}
       borderRightWidth={2}
       borderRightColor={gray["100-800"]}
-      w="max"
+      borderTopWidth={2}
+      borderTopColor={gray["100-800"]}
+      w={{
+        base: "100vw",
+        lg: "max",
+      }}
       p={2}
-      direction="column"
     >
-      <Logo />
+      <Flex
+        direction="column"
+        alignItems="center"
+        justifyContent="space-around"
+        display={{ base: "none", lg: "flex" }}
+      >
+        <Logo />
 
-      <Grid templateRows="repeat(3, 1fr)" gap={4}>
+        <Grid templateRows="repeat(4, 1fr)" gap={4}>
+          {NavList.map(({ icon, title }: NavListState, id: number) => (
+            <IconButton
+              key={id}
+              as={icon}
+              iconProps={{
+                w: 6,
+                h: 6,
+              }}
+              buttonProps={{
+                p: 0,
+                variant: "ghost",
+                _hover: {
+                  bgColor: cyan["300-600"],
+                },
+                bgColor: title === titlePage ? cyan["300-600"] : "",
+                onClick: () =>
+                  router.push(
+                    title === "Dashboard" ? "/" : `/${title.toLowerCase()}`
+                  ),
+              }}
+              tooltipProps={{
+                placement: "right",
+                label:
+                  title === "Dashboard"
+                    ? title
+                    : title === "Add"
+                    ? `${title} book`
+                    : `${title} list`,
+                children: null,
+              }}
+            />
+          ))}
+        </Grid>
+
+        <Theme />
+      </Flex>
+
+      <Grid
+        w="100vw"
+        display={{ base: "grid", lg: "none" }}
+        templateColumns="repeat(4, 1fr)"
+        gap={4}
+      >
         {NavList.map(({ icon, title }: NavListState, id: number) => (
           <IconButton
             key={id}
@@ -53,21 +107,19 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
                   title === "Dashboard" ? "/" : `/${title.toLowerCase()}`
                 ),
             }}
-            tooltipProps={{
-              placement: "right",
-              label:
-                title === "Dashboard"
-                  ? title
-                  : title === "Add"
-                  ? `${title} book`
-                  : `${title} list`,
-              children: null,
-            }}
+            // tooltipProps={{
+            //   placement: "right",
+            //   label:
+            //     title === "Dashboard"
+            //       ? title
+            //       : title === "Add"
+            //       ? `${title} book`
+            //       : `${title} list`,
+            //   children: null,
+            // }}
           />
         ))}
       </Grid>
-
-      <Theme />
     </Flex>
   );
 };

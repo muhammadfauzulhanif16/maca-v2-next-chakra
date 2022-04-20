@@ -12,6 +12,7 @@ import {
   VisuallyHidden,
   useToast,
   useDisclosure,
+  Box,
 } from "@chakra-ui/react";
 import moment from "moment-timezone";
 import {
@@ -182,7 +183,8 @@ export const Shelf: FC<ShelfProps> = ({
           ) : (
             <TableContainer
               overflowY="auto"
-              maxHeight="68vh"
+              maxH="68vh"
+              // maxW="full"
               css={{
                 "&::-webkit-scrollbar": {
                   width: ".5rem",
@@ -234,7 +236,7 @@ export const Shelf: FC<ShelfProps> = ({
                         <Td>
                           {moment(published)
                             .tz("Asia/Jakarta")
-                            .format("MM/YYYY")}
+                            .format("MMM YYYY")}
                         </Td>
                         <Td>
                           {moment(created_at)
