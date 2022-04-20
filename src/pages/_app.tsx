@@ -1,11 +1,15 @@
 import type { AppProps } from "next/app";
-import { ChakraProvider } from "@chakra-ui/react";
+import { Provider } from "react-redux";
+import { store } from "../app";
+import { Chakra } from "../Chakra";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <ChakraProvider>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <Provider store={store}>
+      <Chakra cookies={pageProps.cookies}>
+        <Component {...pageProps} />
+      </Chakra>
+    </Provider>
   );
 };
 
