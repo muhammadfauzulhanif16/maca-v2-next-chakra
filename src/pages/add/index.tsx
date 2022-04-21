@@ -42,7 +42,9 @@ const Add: FC<{}> = (): JSX.Element => {
     is_completed: false,
   };
 
-  const publishedRef = useRef() as MutableRefObject<HTMLInputElement>;
+  const titleRef = useRef() as MutableRefObject<HTMLInputElement>,
+    authorRef = useRef() as MutableRefObject<HTMLInputElement>,
+    publishedRef = useRef() as MutableRefObject<HTMLInputElement>;
 
   return (
     <Formik
@@ -107,6 +109,13 @@ const Add: FC<{}> = (): JSX.Element => {
                         name="title"
                         placeholder=" "
                         {...field}
+                        ref={titleRef}
+                        onFocus={() => {
+                          titleRef.current.placeholder = "Enter title book";
+                        }}
+                        onBlur={() => {
+                          titleRef.current.placeholder = " ";
+                        }}
                       />
 
                       <FormLabel htmlFor="title">Title</FormLabel>
@@ -139,6 +148,13 @@ const Add: FC<{}> = (): JSX.Element => {
                         name="author"
                         placeholder=" "
                         {...field}
+                        ref={authorRef}
+                        onFocus={() => {
+                          authorRef.current.placeholder = "Enter author book";
+                        }}
+                        onBlur={() => {
+                          authorRef.current.placeholder = " ";
+                        }}
                       />
 
                       <FormLabel htmlFor="author">Author</FormLabel>
@@ -171,10 +187,16 @@ const Add: FC<{}> = (): JSX.Element => {
                         name="published"
                         placeholder=" "
                         {...field}
-                        // type="month"
                         ref={publishedRef}
-                        onFocus={() => (publishedRef.current.type = "month")}
-                        onBlur={() => (publishedRef.current.type = "text")}
+                        onFocus={() => {
+                          publishedRef.current.type = "month";
+                          publishedRef.current.placeholder =
+                            "Enter published book";
+                        }}
+                        onBlur={() => {
+                          publishedRef.current.type = "text";
+                          publishedRef.current.placeholder = " ";
+                        }}
                       />
 
                       <FormLabel htmlFor="published">Published</FormLabel>
