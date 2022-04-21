@@ -9,7 +9,6 @@ import {
   Input,
   Checkbox,
   Grid,
-  useColorModeValue,
   Flex,
   useToast,
 } from "@chakra-ui/react";
@@ -42,10 +41,6 @@ const Add: FC<{}> = (): JSX.Element => {
     is_completed: false,
   };
 
-  const titleRef = useRef() as MutableRefObject<HTMLInputElement>,
-    authorRef = useRef() as MutableRefObject<HTMLInputElement>,
-    publishedRef = useRef() as MutableRefObject<HTMLInputElement>;
-
   return (
     <Formik
       initialValues={initialValues}
@@ -56,14 +51,16 @@ const Add: FC<{}> = (): JSX.Element => {
         is_completed: boolean(),
       })}
       onSubmit={(values, { setSubmitting, resetForm }) => {
+        const { title, is_completed } = values;
+
         setTimeout(async () => {
           try {
             await createBook(values).unwrap();
             toast({
               position: "top-right",
               title: "Book added",
-              description: `You've book "${values.title}" on ${
-                values.is_completed ? "finished" : "reading"
+              description: `You've book "${title}" on ${
+                is_completed ? "finished" : "reading"
               } list`,
               status: "success",
               duration: 4000,
@@ -79,6 +76,7 @@ const Add: FC<{}> = (): JSX.Element => {
               isClosable: true,
             });
           }
+
           setSubmitting(false);
           resetForm();
         }, 1000);
@@ -109,13 +107,6 @@ const Add: FC<{}> = (): JSX.Element => {
                         name="title"
                         placeholder=" "
                         {...field}
-                        ref={titleRef}
-                        onFocus={() => {
-                          titleRef.current.placeholder = "Enter title book";
-                        }}
-                        onBlur={() => {
-                          titleRef.current.placeholder = " ";
-                        }}
                       />
 
                       <FormLabel htmlFor="title">Title</FormLabel>
@@ -148,13 +139,6 @@ const Add: FC<{}> = (): JSX.Element => {
                         name="author"
                         placeholder=" "
                         {...field}
-                        ref={authorRef}
-                        onFocus={() => {
-                          authorRef.current.placeholder = "Enter author book";
-                        }}
-                        onBlur={() => {
-                          authorRef.current.placeholder = " ";
-                        }}
                       />
 
                       <FormLabel htmlFor="author">Author</FormLabel>
@@ -187,16 +171,7 @@ const Add: FC<{}> = (): JSX.Element => {
                         name="published"
                         placeholder=" "
                         {...field}
-                        ref={publishedRef}
-                        onFocus={() => {
-                          publishedRef.current.type = "month";
-                          publishedRef.current.placeholder =
-                            "Enter published book";
-                        }}
-                        onBlur={() => {
-                          publishedRef.current.type = "text";
-                          publishedRef.current.placeholder = " ";
-                        }}
+                        type="month"
                       />
 
                       <FormLabel htmlFor="published">Published</FormLabel>
