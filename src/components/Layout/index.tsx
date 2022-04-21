@@ -102,16 +102,6 @@ export const Layout: FC<LayoutProps> = ({
               base: 4,
               lg: 0,
             }}
-            overflow="auto"
-            css={{
-              "&::-webkit-scrollbar": {
-                width: ".5rem",
-              },
-              "&::-webkit-scrollbar-thumb": {
-                backgroundColor: colorMode === "light" ? "#76E4F7" : "#00A3C4",
-                borderRadius: "1rem",
-              },
-            }}
           >
             {children}
           </GridItem>
