@@ -39,6 +39,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
     cyan = {
       "300-600": useColorModeValue("cyan.300", "cyan.600"),
       "200-800": useColorModeValue("cyan.200", "cyan.800"),
+      "400-500": useColorModeValue("cyan.400", "cyan.500"),
     },
     gray = {
       "400-500": useColorModeValue("gray.400", "gray.500"),
@@ -55,6 +56,8 @@ export const PageHeader: FC<PageHeaderProps> = ({
       >
         <Flex mx={4} my={2} justifyContent="space-between">
           <Logo />
+
+          <Heading color={cyan["400-500"]}>Maca</Heading>
 
           <Theme />
         </Flex>
