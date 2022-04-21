@@ -1,4 +1,4 @@
-import { extendTheme } from "@chakra-ui/react";
+import { ComponentStyleConfig, extendTheme } from "@chakra-ui/react";
 
 const activeLabelStyles = {
   transform: "scale(0.85) translateY(-24px)",
@@ -23,10 +23,8 @@ export const theme = extendTheme({
               top: 0,
               left: 0,
               zIndex: 2,
-              position: "absolute",
+              pos: "absolute",
               pointerEvents: "none",
-              mx: 3,
-              px: 1.5,
               my: 2,
               transformOrigin: "left top",
               _light: {

@@ -1,24 +1,24 @@
-import { FC, useRef, MutableRefObject, forwardRef } from "react";
-import { Layout } from "../../components/Layout";
-import { ArrowEnterLeft } from "@emotion-icons/fluentui-system-regular";
 import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
+  Flex,
+  Grid,
   Input,
   Checkbox,
-  Grid,
-  Flex,
   useToast,
+  FormLabel,
+  FormControl,
+  FormHelperText,
+  FormErrorMessage,
+  useColorModeValue,
 } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+import { FC } from "react";
 import {
-  useCreateBookMutation,
   useReadAllBooksQuery,
+  useCreateBookMutation,
 } from "../../app/services/book";
-import { Formik, Form, Field, FormikProps, ErrorMessage } from "formik";
-import { boolean, object, string } from "yup";
+import { Layout } from "../../components";
+import { Form, Field, Formik } from "formik";
+import { object, string, boolean } from "yup";
+import { ArrowEnterLeft } from "@emotion-icons/fluentui-system-regular";
 
 type InitialValues = {
   title: string;
@@ -28,11 +28,16 @@ type InitialValues = {
 };
 
 const Add: FC<{}> = (): JSX.Element => {
-  const router = useRouter(),
-    toast = useToast();
+  const toast = useToast();
 
-  const { data = [], isLoading, isFetching } = useReadAllBooksQuery(""),
-    [createBook] = useCreateBookMutation();
+  const [createBook] = useCreateBookMutation(),
+    {
+      data = [],
+      isLoading,
+      isFetching,
+      isSuccess,
+      isError,
+    } = useReadAllBooksQuery("");
 
   const initialValues: InitialValues = {
     title: "",
@@ -40,6 +45,16 @@ const Add: FC<{}> = (): JSX.Element => {
     published: "",
     is_completed: false,
   };
+
+  const cyan = {
+      "400-500": useColorModeValue("cyan.400", "cyan.500"),
+    },
+    red = {
+      "400-500": useColorModeValue("red.400", "red.500"),
+    },
+    gray = {
+      "400-500": useColorModeValue("gray.400", "gray.500"),
+    };
 
   return (
     <Formik
@@ -93,6 +108,8 @@ const Add: FC<{}> = (): JSX.Element => {
               buttonIcon={ArrowEnterLeft}
               buttonText="Submit"
               amount={data.length}
+              isSuccess={isSuccess}
+              isError={isError}
             >
               <Grid templateRows="repeat(4, 1fr)" gap={10}>
                 <Field name="title">
@@ -107,6 +124,10 @@ const Add: FC<{}> = (): JSX.Element => {
                         name="title"
                         placeholder=" "
                         {...field}
+                        variant="flushed"
+                        focusBorderColor={cyan["400-500"]}
+                        errorBorderColor={red["400-500"]}
+                        borderColor={gray["400-500"]}
                       />
 
                       <FormLabel htmlFor="title">Title</FormLabel>
@@ -119,6 +140,7 @@ const Add: FC<{}> = (): JSX.Element => {
                           display="flex"
                           justifyContent="end"
                           alignItems="start"
+                          color={red["400-500"]}
                         >
                           {error}
                         </FormErrorMessage>
@@ -139,6 +161,10 @@ const Add: FC<{}> = (): JSX.Element => {
                         name="author"
                         placeholder=" "
                         {...field}
+                        variant="flushed"
+                        focusBorderColor={cyan["400-500"]}
+                        errorBorderColor={red["400-500"]}
+                        borderColor={gray["400-500"]}
                       />
 
                       <FormLabel htmlFor="author">Author</FormLabel>
@@ -151,6 +177,7 @@ const Add: FC<{}> = (): JSX.Element => {
                           display="flex"
                           justifyContent="end"
                           alignItems="start"
+                          color={red["400-500"]}
                         >
                           {error}
                         </FormErrorMessage>
@@ -172,6 +199,10 @@ const Add: FC<{}> = (): JSX.Element => {
                         placeholder=" "
                         {...field}
                         type="month"
+                        variant="flushed"
+                        focusBorderColor={cyan["400-500"]}
+                        errorBorderColor={red["400-500"]}
+                        borderColor={gray["400-500"]}
                       />
 
                       <FormLabel htmlFor="published">Published</FormLabel>
@@ -182,6 +213,7 @@ const Add: FC<{}> = (): JSX.Element => {
                           display="flex"
                           justifyContent="end"
                           alignItems="start"
+                          color={red["400-500"]}
                         >
                           {error}
                         </FormErrorMessage>
@@ -195,6 +227,7 @@ const Add: FC<{}> = (): JSX.Element => {
                     <FormControl>
                       <Flex>
                         <Checkbox
+                          variant="rounded"
                           id="is_completed"
                           name="is_completed"
                           {...field}

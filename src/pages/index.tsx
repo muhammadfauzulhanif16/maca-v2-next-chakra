@@ -1,23 +1,20 @@
-import type { NextPage } from "next";
-import { Layout } from "../components/Layout";
-import { Add } from "@emotion-icons/fluentui-system-regular";
 import {
   Grid,
-  GridItem,
   Stat,
+  GridItem,
+  useToast,
   StatLabel,
   StatNumber,
   useColorModeValue,
-  useToast,
-  Spinner,
-  Center,
 } from "@chakra-ui/react";
-import { IconButton } from "../components/IconButton";
+import type { NextPage } from "next";
 import {
+  Add,
+  Book,
   BookAdd,
   BookOpen,
-  Book,
 } from "@emotion-icons/fluentui-system-regular";
+import { Layout, IconButton } from "../components";
 import { BookState, useReadAllBooksQuery } from "../app/services/book";
 
 type Overview = {
@@ -34,22 +31,17 @@ const Home: NextPage = (): JSX.Element => {
       data: allData = [],
       isFetching,
       isLoading,
-      error,
-      isError: isErrorAll,
+      isError,
+      isSuccess,
     } = useReadAllBooksQuery(""),
-    { data: readingData = [], isError: isErrorReading } =
-      useReadAllBooksQuery("false"),
-    { data: finishedData = [], isError: isErrorFinished } =
-      useReadAllBooksQuery("true");
-
-  // console.log("err", error);
+    { data: readingData = [] } = useReadAllBooksQuery("false"),
+    { data: finishedData = [] } = useReadAllBooksQuery("true");
 
   const overviewList: Array<Overview> = [
     {
       icon: BookAdd,
       label: "Amount added",
       amount: allData,
-      // description: 2,
     },
     {
       icon: BookOpen,
@@ -60,7 +52,6 @@ const Home: NextPage = (): JSX.Element => {
       icon: Book,
       label: "Amount Finished",
       amount: finishedData,
-      // description: 16,
     },
   ];
 
@@ -71,17 +62,6 @@ const Home: NextPage = (): JSX.Element => {
       "300-600": useColorModeValue("cyan.300", "cyan.600"),
     };
 
-  // if (isErrorAll && isErrorReading && isErrorFinished) {
-  //   toast({
-  //     title: "Error",
-  //     description: `${error.data}`,
-  //     status: "error",
-  //     duration: 3000,
-  //     isClosable: true,
-  //     position: "top",
-  //   });
-  // }
-
   return (
     <Layout
       isLoading={isLoading || isFetching}
@@ -89,6 +69,8 @@ const Home: NextPage = (): JSX.Element => {
       description="All important overviews of book activity"
       buttonIcon={Add}
       buttonText="Add"
+      isSuccess={isSuccess}
+      isError={isError}
     >
       <Grid
         templateColumns={{
@@ -97,46 +79,48 @@ const Home: NextPage = (): JSX.Element => {
         }}
         gap={{
           base: 4,
-          lg: 8,
+          lg: 10,
         }}
       >
-        {overviewList.map(({ icon, label, amount }, id: number) => (
-          <GridItem
-            key={id}
-            bgColor={gray["100-800"]}
-            p={6}
-            rounded={16}
-            display="flex"
-            flexDirection="row"
-          >
-            <IconButton
-              as={icon}
-              iconProps={{
-                w: 6,
-                h: 6,
-              }}
-              buttonProps={{
-                cursor: "default",
-                variant: "none",
-                mr: 6,
-                p: 0,
-                bgColor: cyan["300-600"],
-              }}
-            />
+        {overviewList.map(
+          ({ icon, label, amount }: Overview, id: number): JSX.Element => (
+            <GridItem
+              key={id}
+              bgColor={gray["100-800"]}
+              p={6}
+              rounded={16}
+              display="flex"
+              flexDirection="row"
+            >
+              <IconButton
+                as={icon}
+                iconProps={{
+                  w: 6,
+                  h: 6,
+                }}
+                buttonProps={{
+                  cursor: "default",
+                  variant: "none",
+                  mr: 6,
+                  p: 0,
+                  bgColor: cyan["300-600"],
+                }}
+              />
 
-            <Stat>
-              <StatLabel>{label}</StatLabel>
+              <Stat>
+                <StatLabel>{label}</StatLabel>
 
-              <StatNumber>
-                {amount.length} {amount.length < 2 ? "book" : "books"}
-              </StatNumber>
-              {/* <StatHelpText>
+                <StatNumber>
+                  {amount.length} {amount.length < 2 ? "book" : "books"}
+                </StatNumber>
+                {/* <StatHelpText>
                   <StatArrow type="increase" />
                   {description} - today
                 </StatHelpText> */}
-            </Stat>
-          </GridItem>
-        ))}
+              </Stat>
+            </GridItem>
+          )
+        )}
       </Grid>
     </Layout>
   );

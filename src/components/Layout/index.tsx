@@ -13,6 +13,8 @@ import { FC, ReactNode } from "react";
 import Head from "next/head";
 import { NavBar } from "../NavBar";
 import { PageHeader } from "../PageHeader";
+import { Dismiss } from "@emotion-icons/fluentui-system-regular";
+import { IconButton } from "../IconButton";
 
 interface LayoutProps {
   titlePage: string;
@@ -23,6 +25,8 @@ interface LayoutProps {
   amount?: number;
   isLoading?: boolean;
   buttonType?: any;
+  isSuccess?: boolean;
+  isError?: boolean;
 }
 
 export const Layout: FC<LayoutProps> = ({
@@ -34,6 +38,8 @@ export const Layout: FC<LayoutProps> = ({
   amount,
   isLoading,
   buttonType,
+  isError,
+  isSuccess,
 }: LayoutProps): JSX.Element => {
   const gray = {
       "50-900": useColorModeValue("gray.50", "gray.900"),
@@ -41,6 +47,9 @@ export const Layout: FC<LayoutProps> = ({
     },
     cyan = {
       "300-600": useColorModeValue("cyan.300", "cyan.600"),
+    },
+    red = {
+      "400-500": useColorModeValue("red.400", "red.500"),
     };
 
   return (
@@ -69,11 +78,11 @@ export const Layout: FC<LayoutProps> = ({
       <Grid
         m={{
           base: 0,
-          lg: 8,
+          lg: 10,
         }}
         templateRows="repeat(5, 1fr)"
-        gap={8}
         w="full"
+        gap={10}
       >
         <PageHeader
           buttonType={buttonType}
@@ -91,20 +100,61 @@ export const Layout: FC<LayoutProps> = ({
             display="flex"
             justifyContent="center"
             alignItems="center"
-          >
-            <Spinner size="xl" color={cyan["300-600"]} thickness="4px" />
-          </GridItem>
-        ) : (
-          <GridItem
-            rowSpan={4}
             mx={{
               base: 4,
               lg: 0,
             }}
-            overflow="auto"
           >
-            {children}
+            <Spinner size="xl" color={cyan["300-600"]} thickness="4px" />
           </GridItem>
+        ) : (
+          <>
+            {isError && (
+              <GridItem
+                rowSpan={4}
+                mx={{
+                  base: 4,
+                  lg: 0,
+                }}
+              >
+                <IconButton
+                  as={Dismiss}
+                  text="An error occurred"
+                  textProps={{
+                    fontSize: "xl",
+                    mt: 8,
+                  }}
+                  iconProps={{
+                    w: 12,
+                    h: 12,
+                  }}
+                  buttonProps={{
+                    color: red["400-500"],
+                    w: "full",
+                    h: "full",
+                    display: "flex",
+                    flexDirection: "column",
+                    p: 0,
+                    variant: "none",
+                    cursor: "default",
+                  }}
+                />
+              </GridItem>
+            )}
+
+            {isSuccess && (
+              <GridItem
+                rowSpan={4}
+                mx={{
+                  base: 4,
+                  lg: 0,
+                }}
+                overflow={titlePage !== "Add" ? "auto" : "none"}
+              >
+                {children}
+              </GridItem>
+            )}
+          </>
         )}
 
         <Box display={{ base: "flex", lg: "none" }}>
