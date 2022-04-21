@@ -101,11 +101,7 @@ export const Layout: FC<LayoutProps> = ({
               base: 4,
               lg: 0,
             }}
-            mb={{
-              base: 4,
-              lg: 0,
-            }}
-            overflow="hidden"
+            overflow="auto"
           >
             {children}
           </GridItem>
