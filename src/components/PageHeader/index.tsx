@@ -42,6 +42,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
       "400-500": useColorModeValue("cyan.400", "cyan.500"),
     },
     gray = {
+      "100-800": useColorModeValue("gray.100", "gray.800"),
       "400-500": useColorModeValue("gray.400", "gray.500"),
     };
 
@@ -49,6 +50,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
     <GridItem>
       <Box
         borderBottomWidth={2}
+        borderBottomColor={gray["100-800"]}
         display={{
           base: "block",
           lg: "none",
