@@ -35,8 +35,6 @@ export const Layout: FC<LayoutProps> = ({
   isLoading,
   buttonType,
 }: LayoutProps): JSX.Element => {
-  const { colorMode } = useColorMode();
-
   const gray = {
       "50-900": useColorModeValue("gray.50", "gray.900"),
       "900-50": useColorModeValue("gray.900", "gray.50"),
@@ -46,7 +44,12 @@ export const Layout: FC<LayoutProps> = ({
     };
 
   return (
-    <Flex bgColor={gray["50-900"]} color={gray["900-50"]} h="100vh">
+    <Flex
+      bgColor={gray["50-900"]}
+      color={gray["900-50"]}
+      h="100vh"
+      userSelect="none"
+    >
       <Head>
         <title>
           {`${
