@@ -182,12 +182,12 @@ export const Shelf: FC<ShelfProps> = ({
             />
           ) : (
             <TableContainer
-              overflowY="auto"
+              overflow="auto"
               maxH="68vh"
-              // maxW="full"
               css={{
                 "&::-webkit-scrollbar": {
                   width: ".5rem",
+                  height: ".5rem",
                 },
                 "&::-webkit-scrollbar-thumb": {
                   backgroundColor:
