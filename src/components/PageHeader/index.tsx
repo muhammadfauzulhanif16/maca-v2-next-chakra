@@ -115,18 +115,33 @@ export const PageHeader: FC<PageHeaderProps> = ({
               _hover: {
                 bgColor: cyan["200-800"],
               },
-              w: 40,
+              w: {
+                base: 0,
+                lg: 40,
+              },
               onClick: () =>
                 router.push(
                   buttonText === "Add" ? `/${buttonText.toLowerCase()}` : ""
                 ),
             }}
             textProps={{
+              display: {
+                base: "none",
+                lg: "block",
+              },
               ml: 4,
             }}
             iconProps={{
               w: 6,
               h: 6,
+            }}
+            tooltipProps={{
+              display: {
+                base: "block",
+                lg: "none",
+              },
+              label: buttonText,
+              children: null,
             }}
           />
         </Box>

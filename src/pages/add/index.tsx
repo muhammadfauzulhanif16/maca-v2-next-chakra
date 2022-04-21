@@ -111,7 +111,7 @@ const Add: FC<{}> = (): JSX.Element => {
               isSuccess={isSuccess}
               isError={isError}
             >
-              <Grid templateRows="repeat(4, 1fr)" gap={10}>
+              <Grid templateRows="repeat(4, 1fr)" gap={10} pt={2}>
                 <Field name="title">
                   {({ field, meta: { error, touched } }: any) => (
                     <FormControl

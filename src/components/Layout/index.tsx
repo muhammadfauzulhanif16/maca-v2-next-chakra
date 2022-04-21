@@ -4,9 +4,7 @@ import {
   Grid,
   GridItem,
   useColorModeValue,
-  Center,
   Spinner,
-  Text,
   useColorMode,
 } from "@chakra-ui/react";
 import { FC, ReactNode } from "react";
@@ -41,6 +39,8 @@ export const Layout: FC<LayoutProps> = ({
   isError,
   isSuccess,
 }: LayoutProps): JSX.Element => {
+  const { colorMode } = useColorMode();
+
   const gray = {
       "50-900": useColorModeValue("gray.50", "gray.900"),
       "900-50": useColorModeValue("gray.900", "gray.50"),
@@ -149,7 +149,18 @@ export const Layout: FC<LayoutProps> = ({
                   base: 4,
                   lg: 0,
                 }}
-                overflow={titlePage !== "Add" ? "auto" : "none"}
+                overflow="auto"
+                css={{
+                  "&::-webkit-scrollbar": {
+                    width: ".5rem",
+                    height: ".5rem",
+                  },
+                  "&::-webkit-scrollbar-thumb": {
+                    backgroundColor:
+                      colorMode === "light" ? "#76E4F7" : "#00A3C4",
+                    borderRadius: "1rem",
+                  },
+                }}
               >
                 {children}
               </GridItem>
