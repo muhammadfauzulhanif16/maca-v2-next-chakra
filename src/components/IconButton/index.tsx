@@ -40,7 +40,7 @@ export const IconButton: FC<IconButtonProps> = ({
         _active={{
           bgColor: "none",
         }}
-        rounded={10}
+        rounded={8}
       >
         {isLoading ? <Spinner /> : <Icon {...iconProps} as={as} />}
 
