@@ -17,10 +17,12 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
     },
     gray = {
       "100-800": useColorModeValue("gray.100", "gray.800"),
+      "50-900": useColorModeValue("gray.50", "gray.900"),
     };
 
   return (
     <Flex
+      bgColor={gray["50-900"]}
       h={{
         base: "max",
         lg: "100vh",
@@ -99,7 +101,7 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
             as={icon}
             text={title === titlePage ? title : ""}
             textProps={{
-              ml: title === titlePage ? 4 : 0,
+              ml: title === titlePage ? 2 : 0,
             }}
             iconProps={{
               w: 6,
@@ -117,16 +119,6 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
                   title === "Dashboard" ? "/" : `/${title.toLowerCase()}`
                 ),
             }}
-            // tooltipProps={{
-            //   placement: "top",
-            //   label:
-            //     title === "Dashboard"
-            //       ? title
-            //       : title === "Add"
-            //       ? `${title} book`
-            //       : `${title} list`,
-            //   children: null,
-            // }}
           />
         ))}
       </Flex>

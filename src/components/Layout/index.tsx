@@ -7,6 +7,7 @@ import {
   Center,
   Spinner,
   Text,
+  useColorMode,
 } from "@chakra-ui/react";
 import { FC, ReactNode } from "react";
 import Head from "next/head";
@@ -34,6 +35,8 @@ export const Layout: FC<LayoutProps> = ({
   isLoading,
   buttonType,
 }: LayoutProps): JSX.Element => {
+  const { colorMode } = useColorMode();
+
   const gray = {
       "50-900": useColorModeValue("gray.50", "gray.900"),
       "900-50": useColorModeValue("gray.900", "gray.50"),
@@ -98,6 +101,16 @@ export const Layout: FC<LayoutProps> = ({
             mb={{
               base: 4,
               lg: 0,
+            }}
+            overflow="auto"
+            css={{
+              "&::-webkit-scrollbar": {
+                width: ".5rem",
+              },
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: colorMode === "light" ? "#76E4F7" : "#00A3C4",
+                borderRadius: "1rem",
+              },
             }}
           >
             {children}
