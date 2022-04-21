@@ -87,28 +87,26 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
         <Theme />
       </Flex>
 
-      <Grid
+      <Flex
         w="100vw"
-        display={{ base: "grid", lg: "none" }}
-        templateColumns="repeat(4, 1fr)"
+        display={{ base: "flex", lg: "none" }}
+        // templateColumns="repeat(4, 1fr)"
         gap={2}
       >
         {NavList.map(({ icon, title }: NavListState, id: number) => (
           <IconButton
             key={id}
             as={icon}
-            text={title}
+            text={title === titlePage ? title : ""}
             textProps={{
-              fontSize: "xs",
+              ml: title === titlePage ? 4 : 0,
             }}
             iconProps={{
               w: 6,
               h: 6,
             }}
             buttonProps={{
-              display: "flex",
-              flexDirection: "column",
-              p: 0,
+              w: title === titlePage ? "full" : "",
               variant: "ghost",
               _hover: {
                 bgColor: cyan["300-600"],
@@ -131,7 +129,7 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
             // }}
           />
         ))}
-      </Grid>
+      </Flex>
     </Flex>
   );
 };
