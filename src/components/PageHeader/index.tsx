@@ -116,7 +116,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
                 bgColor: cyan["200-800"],
               },
               w: {
-                base: 0,
+                base: "max",
                 lg: 40,
               },
               onClick: () =>
