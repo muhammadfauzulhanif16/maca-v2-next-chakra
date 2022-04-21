@@ -19,11 +19,6 @@ export const Theme: FC<ThemeProps> = () => {
 
   return (
     <IconButton
-      tooltipProps={{
-        placement: "right",
-        label: `Change theme : ${colorMode === "light" ? "dark" : "light"}`,
-        children: null,
-      }}
       as={SwitchIcon}
       iconProps={{
         w: 6,

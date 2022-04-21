@@ -18,11 +18,6 @@ export const Logo: FC<LogoProps> = ({
 
   return (
     <IconButton
-      tooltipProps={{
-        children: null,
-        placement: "right",
-        label: "Maca",
-      }}
       as={Notebook}
       iconProps={{
         w: 8,
