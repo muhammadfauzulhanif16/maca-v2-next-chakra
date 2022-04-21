@@ -42,7 +42,7 @@ const Add: FC<{}> = (): JSX.Element => {
     is_completed: false,
   };
 
-  // async function handleSubmit(values: any) {}
+  const publishedRef = useRef() as MutableRefObject<HTMLInputElement>;
 
   return (
     <Formik
@@ -171,7 +171,10 @@ const Add: FC<{}> = (): JSX.Element => {
                         name="published"
                         placeholder=" "
                         {...field}
-                        type="month"
+                        // type="month"
+                        ref={publishedRef}
+                        onFocus={() => (publishedRef.current.type = "month")}
+                        onBlur={() => (publishedRef.current.type = "text")}
                       />
 
                       <FormLabel htmlFor="published">Published</FormLabel>
