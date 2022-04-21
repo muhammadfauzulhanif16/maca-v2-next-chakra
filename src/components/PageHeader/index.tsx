@@ -53,7 +53,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
           lg: "none",
         }}
       >
-        <Flex m={4} justifyContent="space-between">
+        <Flex mx={4} my={2} justifyContent="space-between">
           <Logo />
 
           <Theme />
