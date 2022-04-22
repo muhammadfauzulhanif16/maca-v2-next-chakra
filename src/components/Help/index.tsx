@@ -90,7 +90,7 @@ export const Help: FC<{}> = () => {
                 </Text>{" "}
                 is a website application to keep a list of books are being read
                 or have been read, and taken from the Sundanese language which
-                means "Read".
+                means {`"\Read\"`}.
               </ListItem>
               <ListItem>
                 The technology used is Next JS, Chakra UI, Formik, RTK Query.
