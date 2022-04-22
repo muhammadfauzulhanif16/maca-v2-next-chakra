@@ -56,7 +56,8 @@ export const Help: FC<{}> = () => {
         <ModalContent bgColor={gray["100-800"]} shadow="lg" rounded={16} m={4}>
           <ModalHeader
             px={8}
-            py={6}
+            pt={6}
+            pb={4}
             display="flex"
             justifyContent="space-between"
             alignItems="center"
