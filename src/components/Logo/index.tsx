@@ -25,6 +25,10 @@ export const Logo: FC<{}> = (): JSX.Element => {
       }}
       text="Maca"
       textProps={{
+        display: {
+          base: "inline",
+          lg: "none",
+        },
         fontSize: "2xl",
         ml: 4,
         fontWeight: "bold",
