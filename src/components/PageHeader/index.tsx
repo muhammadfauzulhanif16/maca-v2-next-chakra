@@ -15,6 +15,7 @@ import { IconButton } from "../IconButton";
 import { ArrowClockwise } from "@emotion-icons/fluentui-system-regular";
 import { Logo } from "../Logo";
 import { Theme } from "../Theme";
+import { Help } from "../Help";
 
 interface PageHeaderProps {
   pageHeaderTitle: string;
@@ -61,7 +62,11 @@ export const PageHeader: FC<PageHeaderProps> = ({
 
           <Heading color={cyan["400-500"]}>Maca</Heading>
 
-          <Theme />
+          <Grid templateColumns="repeat(2, 1fr)" gap={2}>
+            <Theme />
+
+            <Help />
+          </Grid>
         </Flex>
       </Box>
 

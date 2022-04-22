@@ -5,6 +5,7 @@ import { Theme } from "../Theme";
 import { IconButton } from "../IconButton";
 import { Logo } from "../Logo";
 import { NavList, NavListState } from "./NavList";
+import { Help } from "../Help";
 
 interface NavBarProps {
   titlePage: string;
@@ -46,12 +47,12 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
       <Flex
         direction="column"
         alignItems="center"
-        justifyContent="space-around"
+        justifyContent="space-between"
         display={{ base: "none", lg: "flex" }}
       >
         <Logo />
 
-        <Grid templateRows="repeat(4, 1fr)" gap={4}>
+        <Grid templateRows="repeat(4, 1fr)" gap={2}>
           {NavList.map(({ icon, title }: NavListState, id: number) => (
             <IconButton
               key={id}
@@ -86,7 +87,10 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
           ))}
         </Grid>
 
-        <Theme />
+        <Grid templateRows="repeat(3, 1fr)" gap={2}>
+          <Theme />
+          <Help />
+        </Grid>
       </Flex>
 
       <Flex w="100vw" display={{ base: "flex", lg: "none" }} gap={2}>
