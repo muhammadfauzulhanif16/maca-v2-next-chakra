@@ -23,6 +23,12 @@ export const Logo: FC<{}> = (): JSX.Element => {
         onClick: () => router.push("/"),
         p: 0,
       }}
+      text="Maca"
+      textProps={{
+        fontSize: "2xl",
+        ml: 4,
+        fontWeight: "bold",
+      }}
     />
   );
 };

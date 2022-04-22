@@ -60,7 +60,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
         <Flex mx={4} my={2} justifyContent="space-between">
           <Logo />
 
-          <Heading color={cyan["400-500"]}>Maca</Heading>
+          {/* <Heading color={cyan["400-500"]}>Maca</Heading> */}
 
           <Grid templateColumns="repeat(2, 1fr)" gap={2}>
             <Theme />
