@@ -53,7 +53,7 @@ export const Help: FC<{}> = () => {
         isCentered
         scrollBehavior="inside"
       >
-        <ModalContent bgColor={gray["100-800"]} shadow="lg" rounded={16}>
+        <ModalContent bgColor={gray["100-800"]} shadow="lg" rounded={16} m={4}>
           <ModalHeader
             px={8}
             py={6}
@@ -73,7 +73,6 @@ export const Help: FC<{}> = () => {
           <ModalBody
             py={0}
             px={4}
-            mx={4}
             css={{
               "&::-webkit-scrollbar": {
                 width: ".5rem",
