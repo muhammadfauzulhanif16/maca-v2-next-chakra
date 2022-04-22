@@ -55,7 +55,8 @@ export const Help: FC<{}> = () => {
       >
         <ModalContent bgColor={gray["100-800"]} shadow="lg" rounded={16}>
           <ModalHeader
-            p={8}
+            px={8}
+            py={6}
             display="flex"
             justifyContent="space-between"
             alignItems="center"
@@ -71,7 +72,8 @@ export const Help: FC<{}> = () => {
 
           <ModalBody
             py={0}
-            px={8}
+            px={4}
+            mx={4}
             css={{
               "&::-webkit-scrollbar": {
                 width: ".5rem",
