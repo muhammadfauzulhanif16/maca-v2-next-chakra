@@ -72,7 +72,7 @@ export const Help: FC<{}> = () => {
 
           <ModalBody
             py={0}
-            px={4}
+            px={6}
             css={{
               "&::-webkit-scrollbar": {
                 width: ".5rem",
