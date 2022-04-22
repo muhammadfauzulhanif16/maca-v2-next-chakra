@@ -47,7 +47,7 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
       <Flex
         direction="column"
         alignItems="center"
-        justifyContent="space-between"
+        justifyContent="space-around"
         display={{ base: "none", lg: "flex" }}
       >
         <Logo />
@@ -87,7 +87,7 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
           ))}
         </Grid>
 
-        <Grid templateRows="repeat(3, 1fr)" gap={2}>
+        <Grid templateRows="repeat(2, 1fr)" gap={2}>
           <Theme />
           <Help />
         </Grid>
