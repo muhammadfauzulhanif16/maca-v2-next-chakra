@@ -4,13 +4,7 @@ import { Notebook } from "@emotion-icons/fluentui-system-regular";
 import { useRouter } from "next/router";
 import { ButtonProps, useColorModeValue } from "@chakra-ui/react";
 
-interface LogoProps {
-  buttonProps?: ButtonProps;
-}
-
-export const Logo: FC<LogoProps> = ({
-  buttonProps,
-}: LogoProps): JSX.Element => {
+export const Logo: FC<{}> = (): JSX.Element => {
   const router = useRouter(),
     cyan = {
       "400-500": useColorModeValue("cyan.400", "cyan.500"),
@@ -24,7 +18,6 @@ export const Logo: FC<LogoProps> = ({
         h: 8,
       }}
       buttonProps={{
-        ...buttonProps,
         color: cyan["400-500"],
         variant: "none",
         onClick: () => router.push("/"),
