@@ -36,7 +36,6 @@ export const Help: FC<{}> = () => {
     { colorMode } = useColorMode();
 
   const router = useRouter();
-  console.log("router", router);
 
   return (
     <>
