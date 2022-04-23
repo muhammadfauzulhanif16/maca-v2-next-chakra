@@ -154,13 +154,9 @@ export const Help: FC<{}> = () => {
           </ModalBody>
 
           <ModalFooter p={4} justifyContent="center">
-            <Code
-              children="version 2.1"
-              colorScheme="cyan"
-              rounded={6}
-              px={2}
-              py={0.5}
-            />
+            <Code colorScheme="cyan" rounded={6} px={2} py={0.5}>
+              version 2.1
+            </Code>
           </ModalFooter>
         </ModalContent>
       </Modal>
