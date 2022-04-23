@@ -112,7 +112,10 @@ export const PageHeader: FC<PageHeaderProps> = ({
 
         <Grid
           templateColumns="repeat(2, 1fr)"
-          gap={4}
+          gap={{
+            base: 2,
+            lg: 4,
+          }}
           display="flex"
           justifyContent="end"
         >

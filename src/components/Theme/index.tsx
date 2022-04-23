@@ -6,9 +6,9 @@ import {
 import { IconButton, IconButtonProps } from "../IconButton";
 import { FC } from "react";
 
-type ThemeProps = Omit<IconButtonProps, "aria-label">;
+// type ThemeProps = Omit<IconButtonProps, "aria-label">;
 
-export const Theme: FC<ThemeProps> = () => {
+export const Theme: FC<{}> = () => {
   const { toggleColorMode } = useColorMode(),
     { colorMode } = useColorMode(),
     SwitchIcon = useColorModeValue(WeatherMoon, WeatherSunny);

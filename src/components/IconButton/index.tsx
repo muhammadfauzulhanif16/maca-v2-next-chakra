@@ -17,7 +17,7 @@ export interface IconButtonProps {
   textProps?: TextProps;
   iconProps?: IconProps;
   text?: string;
-  as?: any;
+  as: any;
   isLoading?: boolean;
 }
 
@@ -31,7 +31,7 @@ export const IconButton: FC<IconButtonProps> = ({
   isLoading,
 }: IconButtonProps): JSX.Element => {
   return (
-    <Tooltip hasArrow {...tooltipProps} rounded={4}>
+    <Tooltip hasArrow {...tooltipProps} rounded={8}>
       <Button
         {...buttonProps}
         _focus={{
@@ -40,7 +40,7 @@ export const IconButton: FC<IconButtonProps> = ({
         _active={{
           bgColor: "none",
         }}
-        rounded={8}
+        rounded={12}
       >
         {isLoading ? <Spinner /> : <Icon {...iconProps} as={as} />}
 

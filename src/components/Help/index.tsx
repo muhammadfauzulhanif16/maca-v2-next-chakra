@@ -58,7 +58,7 @@ export const Help: FC<{}> = () => {
 
         <ModalContent
           bgColor={gray["100-800"]}
-          shadow="lg"
+          shadow="none"
           rounded={16}
           m={4}
           userSelect="none"

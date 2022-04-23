@@ -82,11 +82,11 @@ export const Layout: FC<LayoutProps> = ({
       <Grid
         m={{
           base: 0,
-          lg: 10,
+          lg: 12,
         }}
         templateRows="repeat(5, 1fr)"
         w="full"
-        gap={10}
+        gap={4}
       >
         <PageHeader
           buttonType={buttonType}

@@ -87,7 +87,7 @@ export const Search: FC<SearchProps> = ({
       >
         <ModalOverlay />
 
-        <ModalContent rounded={8} m={4}>
+        <ModalContent rounded={12} m={4} shadow="none">
           <ModalBody p={2} display="flex">
             <IconButton
               as={SearchIcon}
