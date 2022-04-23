@@ -56,7 +56,13 @@ export const Help: FC<{}> = () => {
       >
         <ModalOverlay />
 
-        <ModalContent bgColor={gray["100-800"]} shadow="lg" rounded={16} m={4}>
+        <ModalContent
+          bgColor={gray["100-800"]}
+          shadow="lg"
+          rounded={16}
+          m={4}
+          userSelect="none"
+        >
           <ModalHeader
             px={8}
             pt={6}

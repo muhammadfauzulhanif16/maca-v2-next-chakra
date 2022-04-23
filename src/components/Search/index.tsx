@@ -16,18 +16,19 @@ import { IconButton } from "../IconButton";
 import { Search as SearchIcon } from "@emotion-icons/fluentui-system-regular";
 
 interface SearchProps {
+  isLoading?: boolean;
   shelfSearch?: any;
   setShelfSearch?: any;
 }
 
 export const Search: FC<SearchProps> = ({
+  isLoading,
   shelfSearch,
   setShelfSearch,
 }: SearchProps) => {
   const cyan = {
     "300-600": useColorModeValue("cyan.300", "cyan.600"),
     "200-800": useColorModeValue("cyan.200", "cyan.800"),
-    "400-500": useColorModeValue("cyan.400", "cyan.500"),
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure(),
@@ -43,14 +44,13 @@ export const Search: FC<SearchProps> = ({
     <>
       <IconButton
         as={SearchIcon}
-        // isLoading={isLoading}
+        isLoading={isLoading}
         text="Search"
         buttonProps={{
-          // type: buttonType,
-          // disabled: isLoading,
+          disabled: isLoading,
           bgColor: cyan["300-600"],
           _hover: {
-            bgColor: cyan["200-800"],
+            bgColor: isLoading ? "" : cyan["200-800"],
           },
           w: {
             base: "max",
@@ -92,7 +92,7 @@ export const Search: FC<SearchProps> = ({
             <IconButton
               as={SearchIcon}
               iconProps={{
-                color: cyan["400-500"],
+                color: cyan["300-600"],
                 w: 6,
                 h: 6,
               }}

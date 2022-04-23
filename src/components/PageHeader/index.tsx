@@ -117,7 +117,11 @@ export const PageHeader: FC<PageHeaderProps> = ({
           justifyContent="end"
         >
           {pageHeaderTitle === "Reading" || pageHeaderTitle === "Finished" ? (
-            <Search shelfSearch={shelfSearch} setShelfSearch={setShelfSearch} />
+            <Search
+              isLoading={isLoading}
+              shelfSearch={shelfSearch}
+              setShelfSearch={setShelfSearch}
+            />
           ) : (
             ""
           )}
@@ -131,7 +135,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
               disabled: isLoading,
               bgColor: cyan["300-600"],
               _hover: {
-                bgColor: cyan["200-800"],
+                bgColor: isLoading ? "" : cyan["200-800"],
               },
               w: {
                 base: "max",
