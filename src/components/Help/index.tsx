@@ -17,7 +17,11 @@ import {
   UnorderedList,
   Text,
   ModalOverlay,
+  ListIcon,
+  List,
 } from "@chakra-ui/react";
+import { Github } from "@emotion-icons/boxicons-logos";
+import { useRouter } from "next/router";
 
 export const Help: FC<{}> = () => {
   const cyan = {
@@ -29,6 +33,8 @@ export const Help: FC<{}> = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure(),
     { colorMode } = useColorMode();
+
+  const router = useRouter();
 
   return (
     <>
@@ -64,14 +70,14 @@ export const Help: FC<{}> = () => {
           userSelect="none"
         >
           <ModalHeader
-            px={8}
-            pt={6}
-            pb={4}
+            p={8}
             display="flex"
             justifyContent="space-between"
             alignItems="center"
           >
-            <Heading fontWeight={500}>What am I?</Heading>
+            <Heading fontWeight={500} lineHeight={0}>
+              What am I?
+            </Heading>
             <ModalCloseButton
               position="static"
               _focus={{
@@ -82,7 +88,7 @@ export const Help: FC<{}> = () => {
 
           <ModalBody
             py={0}
-            px={6}
+            px={8}
             css={{
               "&::-webkit-scrollbar": {
                 width: ".5rem",
@@ -120,10 +126,28 @@ export const Help: FC<{}> = () => {
                     See a list of books are being read or have been read on the
                     bookshelf.
                   </ListItem>
+                  <ListItem>Search for book by title or author.</ListItem>
                   <ListItem>Change status and delete book.</ListItem>
                   <ListItem>Light or dark theme mode.</ListItem>
                   <ListItem>Responsive on any device.</ListItem>
                 </OrderedList>
+              </ListItem>
+              <ListItem>
+                Follow in tounch me :
+                <List>
+                  <ListItem
+                    textDecor="underline"
+                    onClick={() =>
+                      router.push("https://github.com/muhammadfauzulhanif16")
+                    }
+                    _hover={{
+                      cursor: "pointer",
+                    }}
+                  >
+                    <ListIcon as={Github} />
+                    @muhammadfauzulhanif16
+                  </ListItem>
+                </List>
               </ListItem>
             </UnorderedList>
           </ModalBody>
