@@ -2,6 +2,7 @@
 /.yarn/
 .pnp.cjs
 .pnp.loader.mjs
+package-lock.json
 
 # dependencies
 /node_modules
