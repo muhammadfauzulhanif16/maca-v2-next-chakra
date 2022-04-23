@@ -7,7 +7,7 @@ import {
   Spinner,
   useColorMode,
 } from "@chakra-ui/react";
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useState } from "react";
 import Head from "next/head";
 import { NavBar } from "../NavBar";
 import { PageHeader } from "../PageHeader";
@@ -25,6 +25,8 @@ interface LayoutProps {
   buttonType?: any;
   isSuccess?: boolean;
   isError?: boolean;
+  shelfSearch?: any;
+  setShelfSearch?: any;
 }
 
 export const Layout: FC<LayoutProps> = ({
@@ -38,6 +40,8 @@ export const Layout: FC<LayoutProps> = ({
   buttonType,
   isError,
   isSuccess,
+  shelfSearch,
+  setShelfSearch,
 }: LayoutProps): JSX.Element => {
   const { colorMode } = useColorMode();
 
@@ -92,6 +96,8 @@ export const Layout: FC<LayoutProps> = ({
           buttonText={buttonText}
           amount={amount}
           isLoading={isLoading}
+          shelfSearch={shelfSearch}
+          setShelfSearch={setShelfSearch}
         />
 
         {isLoading ? (

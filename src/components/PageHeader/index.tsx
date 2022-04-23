@@ -10,12 +10,12 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { IconButton } from "../IconButton";
-import { ArrowClockwise } from "@emotion-icons/fluentui-system-regular";
 import { Logo } from "../Logo";
 import { Theme } from "../Theme";
 import { Help } from "../Help";
+import { Search } from "../Search";
 
 interface PageHeaderProps {
   pageHeaderTitle: string;
@@ -25,6 +25,8 @@ interface PageHeaderProps {
   amount?: number;
   isLoading?: boolean;
   buttonType?: any;
+  shelfSearch?: any;
+  setShelfSearch?: any;
 }
 
 export const PageHeader: FC<PageHeaderProps> = ({
@@ -35,6 +37,8 @@ export const PageHeader: FC<PageHeaderProps> = ({
   amount = 0,
   isLoading,
   buttonType,
+  shelfSearch,
+  setShelfSearch,
 }): JSX.Element => {
   const router = useRouter(),
     cyan = {
@@ -106,7 +110,18 @@ export const PageHeader: FC<PageHeaderProps> = ({
           <Text color={gray["400-500"]}>{description}</Text>
         </Box>
 
-        <Box display="flex" justifyContent="end">
+        <Grid
+          templateColumns="repeat(2, 1fr)"
+          gap={4}
+          display="flex"
+          justifyContent="end"
+        >
+          {pageHeaderTitle === "Reading" || pageHeaderTitle === "Finished" ? (
+            <Search shelfSearch={shelfSearch} setShelfSearch={setShelfSearch} />
+          ) : (
+            ""
+          )}
+
           <IconButton
             as={buttonIcon}
             isLoading={isLoading}
@@ -147,7 +162,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
               children: null,
             }}
           />
-        </Box>
+        </Grid>
       </Box>
     </GridItem>
   );

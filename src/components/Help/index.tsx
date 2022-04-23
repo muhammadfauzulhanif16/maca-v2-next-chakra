@@ -16,6 +16,7 @@ import {
   OrderedList,
   UnorderedList,
   Text,
+  ModalOverlay,
 } from "@chakra-ui/react";
 
 export const Help: FC<{}> = () => {
@@ -53,6 +54,8 @@ export const Help: FC<{}> = () => {
         isCentered
         scrollBehavior="inside"
       >
+        <ModalOverlay />
+
         <ModalContent bgColor={gray["100-800"]} shadow="lg" rounded={16} m={4}>
           <ModalHeader
             px={8}
@@ -62,7 +65,7 @@ export const Help: FC<{}> = () => {
             justifyContent="space-between"
             alignItems="center"
           >
-            <Heading>What am I?</Heading>
+            <Heading fontWeight={500}>What am I?</Heading>
             <ModalCloseButton
               position="static"
               _focus={{

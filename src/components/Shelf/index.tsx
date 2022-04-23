@@ -1,4 +1,4 @@
-import { FC, useRef } from "react";
+import { FC, useRef, useState } from "react";
 import {
   Table,
   Thead,
@@ -119,6 +119,8 @@ export const Shelf: FC<ShelfProps> = ({
       }
     };
 
+  const [search, setSearch] = useState("");
+
   return (
     <Layout
       titlePage={titlePage}
@@ -129,6 +131,8 @@ export const Shelf: FC<ShelfProps> = ({
       amount={data.length}
       isSuccess={isSuccess}
       isError={isError}
+      shelfSearch={search}
+      setShelfSearch={setSearch}
     >
       {data.length === 0 ? (
         <IconButton
@@ -189,56 +193,67 @@ export const Shelf: FC<ShelfProps> = ({
             </Thead>
 
             <Tbody>
-              {data?.map(
-                (
-                  {
-                    id,
-                    title,
-                    author,
-                    published,
-                    is_completed,
-                    created_at,
-                  }: any,
-                  idx: number
-                ) => (
-                  <Tr key={id}>
-                    <Td>{idx + 1}</Td>
-                    <Td>{title}</Td>
-                    <Td>{author}</Td>
-                    <Td>
-                      {moment(published).tz("Asia/Jakarta").format("MMM YYYY")}
-                    </Td>
-                    <Td>
-                      {moment(created_at)
-                        .tz("Asia/Jakarta")
-                        .format("DD/MM/YYYY HH:mm:ss")}
-                    </Td>
-                    <Td>
-                      <IconButton
-                        as={status === "true" ? BookOpen : Book}
-                        iconProps={{
-                          w: 6,
-                          h: 6,
-                        }}
-                        buttonProps={{
-                          p: 0,
-                          mx: 1,
-                          _hover: {
-                            bgColor: blue["300-600"],
-                          },
-                          bgColor: blue["400-500"],
-                          onClick: () =>
-                            handleUpdate({ id, title, is_completed }),
-                        }}
-                        tooltipProps={{
-                          children: null,
-                          label: `Change to ${
-                            status === "true" ? "reading" : "finished"
-                          }?`,
-                        }}
-                      />
+              {data
+                .filter((book: any): void => {
+                  const { title, author } = book;
 
-                      {/* <IconButton
+                  return book === ""
+                    ? book
+                    : title.toLowerCase().includes(search.toLowerCase()) ||
+                        author.toLowerCase().includes(search.toLowerCase());
+                })
+                .map(
+                  (
+                    {
+                      id,
+                      title,
+                      author,
+                      published,
+                      is_completed,
+                      created_at,
+                    }: any,
+                    idx: number
+                  ) => (
+                    <Tr key={id}>
+                      <Td>{idx + 1}</Td>
+                      <Td>{title}</Td>
+                      <Td>{author}</Td>
+                      <Td>
+                        {moment(published)
+                          .tz("Asia/Jakarta")
+                          .format("MMM YYYY")}
+                      </Td>
+                      <Td>
+                        {moment(created_at)
+                          .tz("Asia/Jakarta")
+                          .format("DD/MM/YYYY HH:mm:ss")}
+                      </Td>
+                      <Td>
+                        <IconButton
+                          as={status === "true" ? BookOpen : Book}
+                          iconProps={{
+                            w: 6,
+                            h: 6,
+                          }}
+                          buttonProps={{
+                            p: 0,
+                            mx: 1,
+                            _hover: {
+                              bgColor: blue["300-600"],
+                            },
+                            bgColor: blue["400-500"],
+                            onClick: () =>
+                              handleUpdate({ id, title, is_completed }),
+                          }}
+                          tooltipProps={{
+                            children: null,
+                            label: `Change to ${
+                              status === "true" ? "reading" : "finished"
+                            }?`,
+                          }}
+                        />
+
+                        {/* <IconButton
                             as={Edit}
                             iconProps={{
                               w: 6,
@@ -259,30 +274,30 @@ export const Shelf: FC<ShelfProps> = ({
                             }}
                           /> */}
 
-                      <IconButton
-                        as={Delete}
-                        iconProps={{
-                          w: 6,
-                          h: 6,
-                        }}
-                        buttonProps={{
-                          p: 0,
-                          mx: 1,
-                          _hover: {
-                            bgColor: red["300-600"],
-                          },
-                          bgColor: red["400-500"],
-                          onClick: () => handleDelete({ id, title }),
-                        }}
-                        tooltipProps={{
-                          children: null,
-                          label: "Delete?",
-                        }}
-                      />
-                    </Td>
-                  </Tr>
-                )
-              )}
+                        <IconButton
+                          as={Delete}
+                          iconProps={{
+                            w: 6,
+                            h: 6,
+                          }}
+                          buttonProps={{
+                            p: 0,
+                            mx: 1,
+                            _hover: {
+                              bgColor: red["300-600"],
+                            },
+                            bgColor: red["400-500"],
+                            onClick: () => handleDelete({ id, title }),
+                          }}
+                          tooltipProps={{
+                            children: null,
+                            label: "Delete?",
+                          }}
+                        />
+                      </Td>
+                    </Tr>
+                  )
+                )}
             </Tbody>
           </Table>
         </TableContainer>
