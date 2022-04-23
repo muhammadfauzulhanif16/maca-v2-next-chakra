@@ -107,7 +107,7 @@ export const Search: FC<SearchProps> = ({
             <Input
               id="email"
               type="email"
-              placeholder="Search book"
+              placeholder="Search book by title or author"
               variant="unstyled"
               p={0}
               onInput={handleSearch}
