@@ -25,17 +25,17 @@ type Overview = {
 };
 
 const Home: NextPage = (): JSX.Element => {
-  const toast = useToast();
-
   const {
       data: allData = [],
       isFetching,
-      isLoading,
+      isLoading: isLoadingAll,
       isError,
       isSuccess,
     } = useReadAllBooksQuery(""),
-    { data: readingData = [] } = useReadAllBooksQuery("false"),
-    { data: finishedData = [] } = useReadAllBooksQuery("true");
+    { data: readingData = [], isLoading: isLoadingReading } =
+      useReadAllBooksQuery("false"),
+    { data: finishedData = [], isLoading: isLoadingFinished } =
+      useReadAllBooksQuery("true");
 
   const overviewList: Array<Overview> = [
     {
@@ -64,7 +64,7 @@ const Home: NextPage = (): JSX.Element => {
 
   return (
     <Layout
-      isLoading={isLoading || isFetching}
+      isLoading={isLoadingAll || isLoadingReading || isLoadingFinished}
       titlePage="Dashboard"
       description="All important overviews of book activity"
       buttonIcon={Add}
