@@ -1,15 +1,34 @@
 {
-  "name": "maca-v2.1",
+  "name": "maca-v2.1-next-chakra",
+  "author": "Muhammad Fauzul Hanif <muhammadfauzulhanif16@outlook.com>",
+  "contributors": [
+    "Muhammad Fauzul Hanif <muhammadfauzulhanif16@outlook.com>"
+  ],
+  "bugs": "https://github.com/muhammadfauzulhanif16/maca-v2.1-next-chakra/issues",
+  "homepage": "https://maca-v2-1-next-chakra.vercel.app",
   "version": "2.1.0",
+  "license": "MIT",
+  "keywords": [
+    "book",
+    "shelf"
+  ],
+  "description": "Bookshelf website application",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/muhammadfauzulhanif16/maca-v2.1-next-chakra.git"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.8",
+    "@emotion-icons/boxicons-logos": "^3.19.0",
     "@emotion-icons/fluentui-system-regular": "^3.15.0",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
@@ -22,15 +41,19 @@
     "next": "12.1.5",
     "react": "18.0.0",
     "react-dom": "18.0.0",
-    "react-redux": "^8.0.0",
+    "react-redux": "^8.0.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "17.0.25",
-    "@types/react": "18.0.5",
-    "@types/react-dom": "18.0.1",
-    "eslint": "8.13.0",
+    "@types/react": "18.0.6",
+    "@types/react-dom": "18.0.2",
+    "eslint": "8.14.0",
     "eslint-config-next": "12.1.5",
     "typescript": "4.6.3"
+  },
+  "engines": {
+    "node": "16.14.2",
+    "npm": "8.5.5"
   }
 }
