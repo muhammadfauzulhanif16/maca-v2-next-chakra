@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IconButton } from "../IconButton";
-import { Question } from "@emotion-icons/fluentui-system-regular";
+import { Question, Dismiss } from "@emotion-icons/fluentui-system-regular";
 import {
   useColorModeValue,
   useDisclosure,
@@ -36,6 +36,7 @@ export const Help: FC<{}> = () => {
     { colorMode } = useColorMode();
 
   const router = useRouter();
+  console.log("router", router);
 
   return (
     <>
@@ -79,10 +80,20 @@ export const Help: FC<{}> = () => {
             <Heading fontWeight={500} lineHeight={0}>
               What am I?
             </Heading>
-            <ModalCloseButton
-              position="static"
-              _focus={{
-                shadow: "none",
+
+            <IconButton
+              as={Dismiss}
+              iconProps={{
+                w: 6,
+                h: 6,
+              }}
+              buttonProps={{
+                p: 0,
+                variant: "ghost",
+                _hover: {
+                  bgColor: cyan["300-600"],
+                },
+                onClick: onClose,
               }}
             />
           </ModalHeader>
