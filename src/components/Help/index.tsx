@@ -19,6 +19,7 @@ import {
   ModalOverlay,
   ListIcon,
   List,
+  Code,
 } from "@chakra-ui/react";
 import { Github } from "@emotion-icons/boxicons-logos";
 import { useRouter } from "next/router";
@@ -152,7 +153,15 @@ export const Help: FC<{}> = () => {
             </UnorderedList>
           </ModalBody>
 
-          <ModalFooter p={4} />
+          <ModalFooter p={4} justifyContent="center">
+            <Code
+              children="version 2.1"
+              colorScheme="cyan"
+              rounded={6}
+              px={2}
+              py={0.5}
+            />
+          </ModalFooter>
         </ModalContent>
       </Modal>
     </>
