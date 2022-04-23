@@ -100,7 +100,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
                 top={0}
                 right={0}
                 fontSize={16}
-                rounded={4}
+                rounded={6}
               >
                 {isLoading ? <Spinner size="xs" /> : amount}
               </Badge>
