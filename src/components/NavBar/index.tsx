@@ -135,9 +135,11 @@ export const NavBar: FC<NavBarProps> = ({
               h: 6,
             }}
             buttonProps={{
+              shadow: title === titlePage ? "md" : "",
               w: title === titlePage ? "full" : 0,
               variant: "ghost",
               _hover: {
+                shadow: "md",
                 bgColor: cyan["300-600"],
               },
               bgColor: title === titlePage ? cyan["300-600"] : "",

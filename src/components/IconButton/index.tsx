@@ -35,7 +35,7 @@ export const IconButton: FC<IconButtonProps> = ({
       <Button
         {...buttonProps}
         _focus={{
-          shadow: "none",
+          outline: "none",
         }}
         _active={{
           bgColor: "none",

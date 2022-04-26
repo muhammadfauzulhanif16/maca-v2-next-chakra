@@ -91,6 +91,7 @@ const Home: NextPage = (): JSX.Element => {
               rounded={16}
               display="flex"
               flexDirection="row"
+              shadow="md"
             >
               <IconButton
                 as={icon}
@@ -99,6 +100,7 @@ const Home: NextPage = (): JSX.Element => {
                   h: 6,
                 }}
                 buttonProps={{
+                  shadow: "md",
                   cursor: "default",
                   variant: "none",
                   mr: 6,

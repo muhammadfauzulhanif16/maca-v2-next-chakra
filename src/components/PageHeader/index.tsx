@@ -61,7 +61,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
           lg: "none",
         }}
       >
-        <Flex mx={4} my={2} justifyContent="space-between">
+        <Flex mx={4} my={2} justifyContent="space-between" alignItems="center">
           <Logo />
 
           <Grid templateColumns="repeat(2, 1fr)" gap={2}>
@@ -95,6 +95,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
 
             {pageHeaderTitle !== "Dashboard" ? (
               <Badge
+                shadow="md"
                 colorScheme="cyan"
                 pos="absolute"
                 top={0}
@@ -134,6 +135,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
             isLoading={isLoading}
             text={buttonText}
             buttonProps={{
+              shadow: "md",
               type: buttonType,
               disabled: isLoading,
               bgColor: cyan["300-600"],

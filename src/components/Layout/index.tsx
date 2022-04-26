@@ -155,7 +155,7 @@ export const Layout: FC<LayoutProps> = ({
             {isSuccess && (
               <GridItem
                 rowSpan={4}
-                mx={{
+                px={{
                   base: 4,
                   lg: 0,
                 }}

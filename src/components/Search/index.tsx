@@ -53,6 +53,7 @@ export const Search: FC<SearchProps> = ({
         isLoading={isLoading}
         text="Search"
         buttonProps={{
+          shadow: "md",
           disabled: isLoading,
           bgColor: cyan["300-600"],
           _hover: {
@@ -93,7 +94,7 @@ export const Search: FC<SearchProps> = ({
       >
         <ModalOverlay />
 
-        <ModalContent rounded={12} m={4} shadow="none" bgColor={gray["50-900"]}>
+        <ModalContent rounded={12} m={4} shadow="md" bgColor={gray["50-900"]}>
           <ModalBody p={2} display="flex">
             <IconButton
               as={SearchIcon}

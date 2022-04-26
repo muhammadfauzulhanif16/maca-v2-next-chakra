@@ -28,6 +28,7 @@ export const Theme: FC<{}> = () => {
         variant: "none",
         _hover: {
           bgColor: cyan["300-600"],
+          shadow: "md",
         },
         p: 0,
         onClick: toggleColorMode,

@@ -48,9 +48,7 @@ export const Help: FC<{}> = () => {
         buttonProps={{
           m: 0,
           variant: "none",
-          _hover: {
-            bgColor: cyan["300-600"],
-          },
+          _hover: { shadow: "md", bgColor: cyan["300-600"] },
           onClick: onOpen,
         }}
       />
@@ -65,7 +63,7 @@ export const Help: FC<{}> = () => {
 
         <ModalContent
           bgColor={gray["100-800"]}
-          shadow="none"
+          shadow="md"
           rounded={16}
           m={4}
           userSelect="none"
@@ -91,6 +89,7 @@ export const Help: FC<{}> = () => {
                 variant: "ghost",
                 _hover: {
                   bgColor: cyan["300-600"],
+                  shadow: "md",
                 },
                 onClick: onClose,
               }}
@@ -164,7 +163,7 @@ export const Help: FC<{}> = () => {
           </ModalBody>
 
           <ModalFooter p={4} justifyContent="center">
-            <Code colorScheme="cyan" rounded={6} px={2} py={0.5}>
+            <Code colorScheme="cyan" rounded={6} px={2} py={0.5} shadow="md">
               version 2.1
             </Code>
           </ModalFooter>
