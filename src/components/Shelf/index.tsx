@@ -234,7 +234,7 @@ export const Shelf: FC<ShelfProps> = ({
                               h: 6,
                             }}
                             buttonProps={{
-                              p: 0,
+                              shadow: "md",
                               mx: 1,
                               _hover: {
                                 bgColor: blue["300-600"],
@@ -279,7 +279,7 @@ export const Shelf: FC<ShelfProps> = ({
                               h: 6,
                             }}
                             buttonProps={{
-                              p: 0,
+                              shadow: "md",
                               mx: 1,
                               _hover: {
                                 bgColor: red["300-600"],
