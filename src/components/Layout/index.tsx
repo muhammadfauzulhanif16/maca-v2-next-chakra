@@ -7,11 +7,15 @@ import {
   Spinner,
   useColorMode,
 } from "@chakra-ui/react";
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode } from "react";
 import Head from "next/head";
 import { NavBar } from "../NavBar";
 import { PageHeader } from "../PageHeader";
-import { Dismiss } from "@emotion-icons/fluentui-system-regular";
+import {
+  Dismiss,
+  Book,
+  BookOpen,
+} from "@emotion-icons/fluentui-system-regular";
 import { IconButton } from "../IconButton";
 
 interface LayoutProps {

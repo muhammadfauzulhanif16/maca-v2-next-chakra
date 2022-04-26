@@ -18,10 +18,10 @@ export const Logo: FC<{}> = (): JSX.Element => {
         h: 8,
       }}
       buttonProps={{
+        h: "full",
         color: cyan["400-500"],
         variant: "none",
         onClick: () => router.push("/"),
-        p: 0,
       }}
       text="Maca"
       textProps={{

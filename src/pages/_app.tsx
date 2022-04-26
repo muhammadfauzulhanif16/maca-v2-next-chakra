@@ -2,9 +2,8 @@ import { store } from "../app";
 import { Chakra } from "../Chakra";
 import { Provider } from "react-redux";
 import type { AppProps } from "next/app";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { Box, Spinner, useColorModeValue } from "@chakra-ui/react";
 import NProgress from "nprogress";
 import "../../public/nprogress.css";
 
@@ -12,8 +11,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
 
   useEffect(() => {
-    const handleStart = (url: any) => {
-      console.log(`Loading: ${url}`);
+    const handleStart = () => {
       NProgress.start();
     };
     const handleStop = () => {
@@ -30,13 +28,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       router.events.off("routeChangeError", handleStop);
     };
   }, [router]);
-
-  const cyan = {
-      "300-600": useColorModeValue("cyan.300", "cyan.600"),
-    },
-    gray = {
-      "50-900": useColorModeValue("gray.50", "gray.900"),
-    };
 
   return (
     <Provider store={store}>

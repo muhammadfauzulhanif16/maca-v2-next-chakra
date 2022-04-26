@@ -13,7 +13,10 @@ import {
 } from "@chakra-ui/react";
 import { useState, FC, useRef, MutableRefObject } from "react";
 import { IconButton } from "../IconButton";
-import { Search as SearchIcon } from "@emotion-icons/fluentui-system-regular";
+import {
+  Dismiss,
+  Search as SearchIcon,
+} from "@emotion-icons/fluentui-system-regular";
 
 interface SearchProps {
   isLoading?: boolean;
@@ -31,8 +34,11 @@ export const Search: FC<SearchProps> = ({
     "200-800": useColorModeValue("cyan.200", "cyan.800"),
   };
 
-  const { isOpen, onOpen, onClose } = useDisclosure(),
-    { colorMode } = useColorMode();
+  const gray = {
+    "50-900": useColorModeValue("gray.50", "gray.900"),
+  };
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleSearch = ({ target: { value } }: any) => {
     setShelfSearch(value);
@@ -87,7 +93,7 @@ export const Search: FC<SearchProps> = ({
       >
         <ModalOverlay />
 
-        <ModalContent rounded={12} m={4} shadow="none">
+        <ModalContent rounded={12} m={4} shadow="none" bgColor={gray["50-900"]}>
           <ModalBody p={2} display="flex">
             <IconButton
               as={SearchIcon}
@@ -114,6 +120,23 @@ export const Search: FC<SearchProps> = ({
               value={shelfSearch}
               ref={initialRef}
             />
+
+            {shelfSearch.length > 0 && (
+              <IconButton
+                as={Dismiss}
+                iconProps={{
+                  color: cyan["300-600"],
+                  w: 6,
+                  h: 6,
+                }}
+                buttonProps={{
+                  p: 0,
+                  variant: "none",
+                  ml: 2,
+                  onClick: () => setShelfSearch(""),
+                }}
+              />
+            )}
           </ModalBody>
         </ModalContent>
       </Modal>

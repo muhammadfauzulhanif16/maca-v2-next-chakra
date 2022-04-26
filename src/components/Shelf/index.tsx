@@ -63,10 +63,6 @@ export const Shelf: FC<ShelfProps> = ({
       "400-500": useColorModeValue("red.400", "red.500"),
       "300-600": useColorModeValue("red.300", "red.600"),
     },
-    yellow = {
-      "400-500": useColorModeValue("yellow.400", "yellow.500"),
-      "300-600": useColorModeValue("yellow.300", "yellow.600"),
-    },
     blue = {
       "400-500": useColorModeValue("blue.400", "blue.500"),
       "300-600": useColorModeValue("blue.300", "blue.600"),
@@ -120,6 +116,14 @@ export const Shelf: FC<ShelfProps> = ({
     };
 
   const [search, setSearch] = useState("");
+  const searchBook = data.filter((book: any): void => {
+    const { title, author } = book;
+
+    return book === ""
+      ? book
+      : title.toLowerCase().includes(search.toLowerCase()) ||
+          author.toLowerCase().includes(search.toLowerCase());
+  });
 
   return (
     <Layout
@@ -158,102 +162,96 @@ export const Shelf: FC<ShelfProps> = ({
           }}
         />
       ) : (
-        <TableContainer
-          overflowY="auto"
-          h="100%"
-          css={{
-            "&::-webkit-scrollbar": {
-              width: ".5rem",
-              height: ".5rem",
-            },
-            "&::-webkit-scrollbar-thumb": {
-              backgroundColor: colorMode === "light" ? "#76E4F7" : "#00A3C4",
-              borderRadius: "1rem",
-            },
-          }}
-        >
-          <Table variant="simple">
-            <Thead
-              position="sticky"
-              top={0}
-              bgColor={gray["50-900"]}
-              zIndex={2}
-              my={2}
+        <>
+          {searchBook.length > 0 ? (
+            <TableContainer
+              overflowY="auto"
+              h="100%"
+              css={{
+                "&::-webkit-scrollbar": {
+                  width: ".5rem",
+                  height: ".5rem",
+                },
+                "&::-webkit-scrollbar-thumb": {
+                  backgroundColor:
+                    colorMode === "light" ? "#76E4F7" : "#00A3C4",
+                  borderRadius: "1rem",
+                },
+              }}
             >
-              <Tr>
-                <Th>#</Th>
-                <Th>Title</Th>
-                <Th>Author</Th>
-                <Th>Published</Th>
-                <Th>Created At</Th>
-                <Th>
-                  <VisuallyHidden>Action</VisuallyHidden>
-                </Th>
-              </Tr>
-            </Thead>
+              <Table variant="simple">
+                <Thead
+                  position="sticky"
+                  top={0}
+                  bgColor={gray["50-900"]}
+                  zIndex={2}
+                  my={2}
+                >
+                  <Tr>
+                    <Th>#</Th>
+                    <Th>Title</Th>
+                    <Th>Author</Th>
+                    <Th>Published</Th>
+                    <Th>Created At</Th>
+                    <Th>
+                      <VisuallyHidden>Action</VisuallyHidden>
+                    </Th>
+                  </Tr>
+                </Thead>
 
-            <Tbody>
-              {data
-                .filter((book: any): void => {
-                  const { title, author } = book;
+                <Tbody>
+                  {searchBook.map(
+                    (
+                      {
+                        id,
+                        title,
+                        author,
+                        published,
+                        is_completed,
+                        created_at,
+                      }: any,
+                      idx: number
+                    ) => (
+                      <Tr key={id}>
+                        <Td>{idx + 1}</Td>
+                        <Td>{title}</Td>
+                        <Td>{author}</Td>
+                        <Td>
+                          {moment(published)
+                            .tz("Asia/Jakarta")
+                            .format("MMM YYYY")}
+                        </Td>
+                        <Td>
+                          {moment(created_at)
+                            .tz("Asia/Jakarta")
+                            .format("DD/MM/YYYY HH:mm:ss")}
+                        </Td>
+                        <Td>
+                          <IconButton
+                            as={status === "true" ? BookOpen : Book}
+                            iconProps={{
+                              w: 6,
+                              h: 6,
+                            }}
+                            buttonProps={{
+                              p: 0,
+                              mx: 1,
+                              _hover: {
+                                bgColor: blue["300-600"],
+                              },
+                              bgColor: blue["400-500"],
+                              onClick: () =>
+                                handleUpdate({ id, title, is_completed }),
+                            }}
+                            tooltipProps={{
+                              children: null,
+                              label: `Change to ${
+                                status === "true" ? "reading" : "finished"
+                              }?`,
+                            }}
+                          />
 
-                  return book === ""
-                    ? book
-                    : title.toLowerCase().includes(search.toLowerCase()) ||
-                        author.toLowerCase().includes(search.toLowerCase());
-                })
-                .map(
-                  (
-                    {
-                      id,
-                      title,
-                      author,
-                      published,
-                      is_completed,
-                      created_at,
-                    }: any,
-                    idx: number
-                  ) => (
-                    <Tr key={id}>
-                      <Td>{idx + 1}</Td>
-                      <Td>{title}</Td>
-                      <Td>{author}</Td>
-                      <Td>
-                        {moment(published)
-                          .tz("Asia/Jakarta")
-                          .format("MMM YYYY")}
-                      </Td>
-                      <Td>
-                        {moment(created_at)
-                          .tz("Asia/Jakarta")
-                          .format("DD/MM/YYYY HH:mm:ss")}
-                      </Td>
-                      <Td>
-                        <IconButton
-                          as={status === "true" ? BookOpen : Book}
-                          iconProps={{
-                            w: 6,
-                            h: 6,
-                          }}
-                          buttonProps={{
-                            p: 0,
-                            mx: 1,
-                            _hover: {
-                              bgColor: blue["300-600"],
-                            },
-                            bgColor: blue["400-500"],
-                            onClick: () =>
-                              handleUpdate({ id, title, is_completed }),
-                          }}
-                          tooltipProps={{
-                            children: null,
-                            label: `Change to ${
-                              status === "true" ? "reading" : "finished"
-                            }?`,
-                          }}
-                        />
-
-                        {/* <IconButton
+                          {/* <IconButton
                             as={Edit}
                             iconProps={{
                               w: 6,
@@ -274,33 +272,60 @@ export const Shelf: FC<ShelfProps> = ({
                             }}
                           /> */}
 
-                        <IconButton
-                          as={Delete}
-                          iconProps={{
-                            w: 6,
-                            h: 6,
-                          }}
-                          buttonProps={{
-                            p: 0,
-                            mx: 1,
-                            _hover: {
-                              bgColor: red["300-600"],
-                            },
-                            bgColor: red["400-500"],
-                            onClick: () => handleDelete({ id, title }),
-                          }}
-                          tooltipProps={{
-                            children: null,
-                            label: "Delete?",
-                          }}
-                        />
-                      </Td>
-                    </Tr>
-                  )
-                )}
-            </Tbody>
-          </Table>
-        </TableContainer>
+                          <IconButton
+                            as={Delete}
+                            iconProps={{
+                              w: 6,
+                              h: 6,
+                            }}
+                            buttonProps={{
+                              p: 0,
+                              mx: 1,
+                              _hover: {
+                                bgColor: red["300-600"],
+                              },
+                              bgColor: red["400-500"],
+                              onClick: () => handleDelete({ id, title }),
+                            }}
+                            tooltipProps={{
+                              children: null,
+                              label: "Delete?",
+                            }}
+                          />
+                        </Td>
+                      </Tr>
+                    )
+                  )}
+                </Tbody>
+              </Table>
+            </TableContainer>
+          ) : (
+            <IconButton
+              as={status === "true" ? Book : BookOpen}
+              text={`No books found on ${
+                status === "true" ? "finished" : "reading"
+              }`}
+              textProps={{
+                fontSize: "xl",
+                mt: 8,
+              }}
+              iconProps={{
+                w: 12,
+                h: 12,
+              }}
+              buttonProps={{
+                color: gray["400-500"],
+                w: "full",
+                h: "full",
+                display: "flex",
+                flexDirection: "column",
+                p: 0,
+                variant: "none",
+                cursor: "default",
+              }}
+            />
+          )}
+        </>
       )}
     </Layout>
   );

@@ -1,4 +1,12 @@
-import { Grid, Flex, useColorModeValue, Box } from "@chakra-ui/react";
+import {
+  Grid,
+  Flex,
+  useColorModeValue,
+  Box,
+  useColorMode,
+  VStack,
+  HStack,
+} from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FC } from "react";
 import { Theme } from "../Theme";
@@ -11,9 +19,13 @@ interface NavBarProps {
   titlePage: string;
 }
 
-export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
+export const NavBar: FC<NavBarProps> = ({
+  titlePage,
+}: NavBarProps): JSX.Element => {
   const router = useRouter(),
-    cyan = {
+    { colorMode } = useColorMode();
+
+  const cyan = {
       "300-600": useColorModeValue("cyan.300", "cyan.600"),
     },
     gray = {
@@ -22,16 +34,20 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
     };
 
   return (
-    <Flex
+    <Box
       bgColor={gray["50-900"]}
       h={{
         base: "max",
         lg: "100vh",
       }}
-      borderRightWidth={2}
-      borderRightColor={gray["100-800"]}
-      borderTopWidth={2}
-      borderTopColor={gray["100-800"]}
+      borderRight={{
+        base: "none",
+        lg: `2px solid ${colorMode === "light" ? "#edf2f7" : "#1a202c"}`,
+      }}
+      borderTop={{
+        base: `2px solid ${colorMode === "light" ? "#edf2f7" : "#1a202c"}`,
+        lg: "none",
+      }}
       w={{
         base: "100vw",
         lg: "max",
@@ -44,56 +60,68 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
         base: 2,
       }}
     >
-      <Flex
-        direction="column"
-        alignItems="center"
-        justifyContent="space-around"
-        display={{ base: "none", lg: "flex" }}
+      <Grid
+        h="full"
+        templateRows="repeat(3, 1fr)"
+        display={{
+          base: "none",
+          lg: "grid",
+        }}
       >
         <Logo />
 
-        <Grid templateRows="repeat(4, 1fr)" gap={2}>
-          {NavList.map(({ icon, title }: NavListState, id: number) => (
-            <IconButton
-              key={id}
-              as={icon}
-              iconProps={{
-                w: 6,
-                h: 6,
-              }}
-              buttonProps={{
-                p: 0,
-                variant: "ghost",
-                _hover: {
-                  bgColor: cyan["300-600"],
-                },
-                bgColor: title === titlePage ? cyan["300-600"] : "",
-                onClick: () =>
-                  router.push(
-                    title === "Dashboard" ? "/" : `/${title.toLowerCase()}`
-                  ),
-              }}
-              tooltipProps={{
-                placement: "right",
-                label:
-                  title === "Dashboard"
-                    ? title
-                    : title === "Add"
-                    ? `${title} book`
-                    : `${title} list`,
-                children: null,
-              }}
-            />
-          ))}
-        </Grid>
+        <Flex justifyContent="center" direction="column" gap={2}>
+          {NavList.map(
+            ({ icon, title }: NavListState, id: number): JSX.Element => (
+              <IconButton
+                key={id}
+                as={icon}
+                iconProps={{
+                  w: 6,
+                  h: 6,
+                }}
+                buttonProps={{
+                  variant: "ghost",
+                  _hover: {
+                    bgColor: cyan["300-600"],
+                  },
+                  bgColor: title === titlePage ? cyan["300-600"] : "",
+                  onClick: () =>
+                    router.push(
+                      `/${
+                        title === "Dashboard" ? "" : `${title.toLowerCase()}`
+                      }`
+                    ),
+                }}
+                tooltipProps={{
+                  placement: "right",
+                  label:
+                    title === "Dashboard"
+                      ? title
+                      : title === "Add"
+                      ? `${title} book`
+                      : `${title} list`,
+                  children: null,
+                }}
+              />
+            )
+          )}
+        </Flex>
 
-        <Grid templateRows="repeat(2, 1fr)" gap={2}>
+        <Flex justifyContent="center" direction="column" gap={2}>
           <Theme />
           <Help />
-        </Grid>
-      </Flex>
+        </Flex>
+      </Grid>
 
-      <Flex w="100vw" display={{ base: "flex", lg: "none" }} gap={2}>
+      <Flex
+        w="full"
+        display={{
+          base: "flex",
+          lg: "none",
+        }}
+        gap={2}
+      >
         {NavList.map(({ icon, title }: NavListState, id: number) => (
           <IconButton
             key={id}
@@ -121,6 +149,6 @@ export const NavBar: FC<NavBarProps> = ({ titlePage }): JSX.Element => {
           />
         ))}
       </Flex>
-    </Flex>
+    </Box>
   );
 };

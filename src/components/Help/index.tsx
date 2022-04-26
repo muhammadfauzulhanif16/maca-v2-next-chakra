@@ -46,11 +46,11 @@ export const Help: FC<{}> = () => {
           h: 6,
         }}
         buttonProps={{
+          m: 0,
           variant: "none",
           _hover: {
             bgColor: cyan["300-600"],
           },
-          p: 0,
           onClick: onOpen,
         }}
       />
