@@ -98,18 +98,21 @@ export const MacaMenu: FC<MacaMenuProps> = ({
         outline="none"
         shadow="md"
       >
-        {menuItemList.map(({ icon, text, onClick }: MenuItemState) => (
-          <MenuItem
-            _hover={{
-              bgColor: "none",
-              fontWeight: 500,
-            }}
-            icon={icon}
-            onClick={onClick}
-          >
-            {text}
-          </MenuItem>
-        ))}
+        {menuItemList.map(
+          ({ icon, text, onClick }: MenuItemState, id: number) => (
+            <MenuItem
+              key={id}
+              _hover={{
+                bgColor: "none",
+                fontWeight: 500,
+              }}
+              icon={icon}
+              onClick={onClick}
+            >
+              {text}
+            </MenuItem>
+          )
+        )}
       </MenuList>
     </Menu>
   );
