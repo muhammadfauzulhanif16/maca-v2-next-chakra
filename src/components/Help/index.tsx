@@ -9,7 +9,6 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
   useColorMode,
   Heading,
   ListItem,
