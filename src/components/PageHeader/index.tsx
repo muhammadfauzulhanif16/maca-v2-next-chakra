@@ -8,13 +8,31 @@ import {
   Spinner,
   Grid,
   Flex,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ListItem,
+  OrderedList,
+  UnorderedList,
+  ModalOverlay,
+  ListIcon,
+  List,
+  Code,
+  useDisclosure,
+  useColorMode,
 } from "@chakra-ui/react";
+import { Github } from "@emotion-icons/boxicons-logos";
+import {
+  Dismiss,
+  LineHorizontal3,
+} from "@emotion-icons/fluentui-system-regular";
 import { useRouter } from "next/router";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { IconButton } from "../IconButton";
 import { Logo } from "../Logo";
-import { Theme } from "../Theme";
-import { Help } from "../Help";
+import { MacaMenu } from "../Menu";
 import { Search } from "../Search";
 
 interface PageHeaderProps {
@@ -40,8 +58,11 @@ export const PageHeader: FC<PageHeaderProps> = ({
   shelfSearch,
   setShelfSearch,
 }): JSX.Element => {
-  const router = useRouter(),
-    cyan = {
+  const { isOpen, onOpen, onClose } = useDisclosure(),
+    router = useRouter(),
+    { colorMode, toggleColorMode } = useColorMode();
+
+  const cyan = {
       "300-600": useColorModeValue("cyan.300", "cyan.600"),
       "200-800": useColorModeValue("cyan.200", "cyan.800"),
       "400-500": useColorModeValue("cyan.400", "cyan.500"),
@@ -64,10 +85,32 @@ export const PageHeader: FC<PageHeaderProps> = ({
         <Flex mx={4} my={2} justifyContent="space-between" alignItems="center">
           <Logo />
 
-          <Grid templateColumns="repeat(2, 1fr)" gap={2}>
-            <Theme />
-
-            <Help />
+          <Grid templateColumns="repeat(1, 1fr)" gap={2}>
+            <MacaMenu
+              as="iconButton"
+              iconButtonProps={{
+                "aria-label": "Menu",
+                icon: <LineHorizontal3 />,
+                p: 2,
+              }}
+              menuItemList={[
+                {
+                  text: `Theme : ${colorMode === "light" ? "Light" : "Dark"}`,
+                  onClick: toggleColorMode,
+                },
+                {
+                  text: "Help",
+                  onClick: onOpen,
+                },
+              ]}
+              menuProps={{
+                children: null,
+                placement: "bottom-end",
+              }}
+              menuListProps={{
+                p: 0,
+              }}
+            />
           </Grid>
         </Flex>
       </Box>
@@ -173,6 +216,123 @@ export const PageHeader: FC<PageHeaderProps> = ({
           />
         </Grid>
       </Box>
+
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        isCentered
+        scrollBehavior="inside"
+      >
+        <ModalOverlay />
+
+        <ModalContent
+          bgColor={gray["100-800"]}
+          shadow="md"
+          rounded={16}
+          m={4}
+          userSelect="none"
+        >
+          <ModalHeader
+            p={8}
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Heading fontWeight={500} lineHeight={0}>
+              What am I?
+            </Heading>
+
+            <IconButton
+              as={Dismiss}
+              iconProps={{
+                w: 6,
+                h: 6,
+              }}
+              buttonProps={{
+                p: 0,
+                variant: "ghost",
+                _hover: {
+                  bgColor: cyan["300-600"],
+                  shadow: "md",
+                },
+                onClick: onClose,
+              }}
+            />
+          </ModalHeader>
+
+          <ModalBody
+            py={0}
+            px={8}
+            css={{
+              "&::-webkit-scrollbar": {
+                width: ".5rem",
+                height: ".5rem",
+              },
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: colorMode === "light" ? "#76E4F7" : "#00A3C4",
+                borderRadius: "1rem",
+              },
+            }}
+          >
+            <UnorderedList>
+              <ListItem>
+                <Text display="inline" fontWeight="700">
+                  Maca
+                </Text>{" "}
+                is a website application to keep a list of books are being read
+                or have been read, and taken from the Sundanese language which
+                means {`"\Read\"`}.
+              </ListItem>
+              <ListItem>
+                The technology used is Next JS, Chakra UI, Formik, RTK Query.
+              </ListItem>
+              <ListItem>
+                Features :
+                <OrderedList>
+                  <ListItem>
+                    Add books to the bookshelf are being read or have been read
+                    with details of title, author and published.
+                  </ListItem>
+                  <ListItem>
+                    See all important overview of book activity.
+                  </ListItem>
+                  <ListItem>
+                    See a list of books are being read or have been read on the
+                    bookshelf.
+                  </ListItem>
+                  <ListItem>Search for book by title or author.</ListItem>
+                  <ListItem>Change status and delete book.</ListItem>
+                  <ListItem>Light or dark theme mode.</ListItem>
+                  <ListItem>Responsive on any device.</ListItem>
+                </OrderedList>
+              </ListItem>
+              <ListItem>
+                Follow in tounch me :
+                <List>
+                  <ListItem
+                    textDecor="underline"
+                    onClick={() =>
+                      router.push("https://github.com/muhammadfauzulhanif16")
+                    }
+                    _hover={{
+                      cursor: "pointer",
+                    }}
+                  >
+                    <ListIcon as={Github} />
+                    @muhammadfauzulhanif16
+                  </ListItem>
+                </List>
+              </ListItem>
+            </UnorderedList>
+          </ModalBody>
+
+          <ModalFooter p={4} justifyContent="center">
+            <Code colorScheme="cyan" rounded={6} px={2} py={0.5} shadow="md">
+              version 2.1
+            </Code>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </GridItem>
   );
 };

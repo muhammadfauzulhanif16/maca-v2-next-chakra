@@ -22,18 +22,13 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FC } from "react";
-import { Theme } from "../Theme";
 import { IconButton } from "../IconButton";
 import { Logo } from "../Logo";
 import { NavList, NavListState } from "./NavList";
-import { Help } from "../Help";
 import { MacaMenu } from "../Menu";
 import {
   Dismiss,
   LineHorizontal3,
-  Question,
-  WeatherMoon,
-  WeatherSunny,
 } from "@emotion-icons/fluentui-system-regular";
 import { Github } from "@emotion-icons/boxicons-logos";
 
@@ -134,9 +129,6 @@ export const NavBar: FC<NavBarProps> = ({
         </Flex>
 
         <Flex justifyContent="center" direction="column" gap={2}>
-          {/* <Theme /> */}
-          {/* <Help /> */}
-
           <MacaMenu
             as="iconButton"
             iconButtonProps={{
@@ -147,12 +139,10 @@ export const NavBar: FC<NavBarProps> = ({
             menuItemList={[
               {
                 text: `Theme : ${colorMode === "light" ? "Light" : "Dark"}`,
-                // icon: useColorModeValue(<WeatherMoon />, <WeatherSunny />),
                 onClick: toggleColorMode,
               },
               {
                 text: "Help",
-                // icon: <Question />,
                 onClick: onOpen,
               },
             ]}

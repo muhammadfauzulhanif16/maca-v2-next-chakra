@@ -13,10 +13,10 @@ import {
   MenuItemProps,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { Question } from "@emotion-icons/fluentui-system-regular";
 import { FC } from "react";
 
 type MenuItemState = {
-  icon: any;
   text: string;
   onClick: any;
 };
@@ -30,7 +30,7 @@ interface MacaMenuProps {
   menuButtonText?: string;
   menuListProps?: MenuListProps;
   menuItemProps?: MenuItemProps;
-  menuItemList: any;
+  menuItemList: Array<MenuItemState>;
 }
 
 export const MacaMenu: FC<MacaMenuProps> = ({
@@ -69,6 +69,7 @@ export const MacaMenu: FC<MacaMenuProps> = ({
             bgColor: cyan["300-600"],
             shadow: "md",
           }}
+          variant="ghost"
         >
           {menuButtonText}
         </MenuButton>
@@ -93,26 +94,28 @@ export const MacaMenu: FC<MacaMenuProps> = ({
 
       <MenuList
         {...menuListProps}
-        rounded={16}
+        rounded={12}
         bgColor={gray["50-900"]}
-        outline="none"
         shadow="md"
+        border={0}
       >
-        {menuItemList.map(
-          ({ icon, text, onClick }: MenuItemState, id: number) => (
-            <MenuItem
-              key={id}
-              _hover={{
-                bgColor: "none",
-                fontWeight: 500,
-              }}
-              icon={icon}
-              onClick={onClick}
-            >
-              {text}
-            </MenuItem>
-          )
-        )}
+        {menuItemList.map(({ text, onClick }: MenuItemState, id: number) => (
+          <MenuItem
+            key={id}
+            onClick={onClick}
+            rounded={12}
+            _hover={{
+              shadow: "md",
+              bgColor: cyan["300-600"],
+            }}
+            _focus={{
+              bgColor: "none",
+            }}
+            {...menuItemProps}
+          >
+            {text}
+          </MenuItem>
+        ))}
       </MenuList>
     </Menu>
   );
