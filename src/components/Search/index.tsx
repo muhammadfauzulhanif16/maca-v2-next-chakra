@@ -3,20 +3,13 @@ import {
   useDisclosure,
   Modal,
   ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
-  ModalCloseButton,
   ModalOverlay,
-  useColorMode,
   Input,
 } from "@chakra-ui/react";
-import { useState, FC, useRef, MutableRefObject } from "react";
+import { FC, useRef, MutableRefObject } from "react";
 import { IconButton } from "../IconButton";
-import {
-  Dismiss,
-  Search as SearchIcon,
-} from "@emotion-icons/fluentui-system-regular";
+import { Dismiss, BookSearch } from "@emotion-icons/fluentui-system-regular";
 
 interface SearchProps {
   isLoading?: boolean;
@@ -49,7 +42,7 @@ export const Search: FC<SearchProps> = ({
   return (
     <>
       <IconButton
-        as={SearchIcon}
+        as={BookSearch}
         isLoading={isLoading}
         text="Search"
         buttonProps={{
@@ -97,7 +90,7 @@ export const Search: FC<SearchProps> = ({
         <ModalContent rounded={12} m={4} shadow="md" bgColor={gray["50-900"]}>
           <ModalBody p={2} display="flex">
             <IconButton
-              as={SearchIcon}
+              as={BookSearch}
               iconProps={{
                 color: cyan["300-600"],
                 w: 6,
