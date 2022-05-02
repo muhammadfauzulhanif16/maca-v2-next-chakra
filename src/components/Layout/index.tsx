@@ -53,8 +53,8 @@ export const Layout: FC<LayoutProps> = ({
       "50-900": useColorModeValue("gray.50", "gray.900"),
       "900-50": useColorModeValue("gray.900", "gray.50"),
     },
-    cyan = {
-      "300-600": useColorModeValue("cyan.300", "cyan.600"),
+    blue = {
+      "300-600": useColorModeValue("blue.300", "blue.600"),
     },
     red = {
       "400-500": useColorModeValue("red.400", "red.500"),
@@ -115,7 +115,7 @@ export const Layout: FC<LayoutProps> = ({
               lg: 0,
             }}
           >
-            <Spinner size="xl" color={cyan["300-600"]} thickness="4px" />
+            <Spinner size="xl" color={blue["300-600"]} thickness="4px" />
           </GridItem>
         ) : (
           <>
@@ -167,7 +167,7 @@ export const Layout: FC<LayoutProps> = ({
                   },
                   "&::-webkit-scrollbar-thumb": {
                     backgroundColor:
-                      colorMode === "light" ? "#76E4F7" : "#00A3C4",
+                      colorMode === "light" ? "#63B3ED" : "#2B6CB0",
                     borderRadius: "1rem",
                   },
                 }}

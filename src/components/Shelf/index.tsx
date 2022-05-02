@@ -141,7 +141,7 @@ export const Shelf: FC<ShelfProps> = ({
       {data.length === 0 ? (
         <IconButton
           as={status === "true" ? Book : BookOpen}
-          text={`No book on ${status === "true" ? "finished" : "reading"} list`}
+          text={`No book at ${status === "true" ? "finished" : "reading"} list`}
           textProps={{
             fontSize: "xl",
             mt: 8,

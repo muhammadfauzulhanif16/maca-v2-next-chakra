@@ -22,9 +22,9 @@ export const Search: FC<SearchProps> = ({
   shelfSearch,
   setShelfSearch,
 }: SearchProps) => {
-  const cyan = {
-    "300-600": useColorModeValue("cyan.300", "cyan.600"),
-    "200-800": useColorModeValue("cyan.200", "cyan.800"),
+  const blue = {
+    "300-600": useColorModeValue("blue.300", "blue.600"),
+    "200-800": useColorModeValue("blue.200", "blue.800"),
   };
 
   const gray = {
@@ -48,9 +48,9 @@ export const Search: FC<SearchProps> = ({
         buttonProps={{
           shadow: "md",
           disabled: isLoading,
-          bgColor: cyan["300-600"],
+          bgColor: blue["300-600"],
           _hover: {
-            bgColor: isLoading ? "" : cyan["200-800"],
+            bgColor: isLoading ? "" : blue["200-800"],
           },
           w: {
             base: "max",
@@ -92,7 +92,7 @@ export const Search: FC<SearchProps> = ({
             <IconButton
               as={BookSearch}
               iconProps={{
-                color: cyan["300-600"],
+                color: blue["300-600"],
                 w: 6,
                 h: 6,
               }}
@@ -119,7 +119,7 @@ export const Search: FC<SearchProps> = ({
               <IconButton
                 as={Dismiss}
                 iconProps={{
-                  color: cyan["300-600"],
+                  color: blue["300-600"],
                   w: 6,
                   h: 6,
                 }}

@@ -58,8 +58,8 @@ const Home: NextPage = (): JSX.Element => {
   const gray = {
       "100-800": useColorModeValue("gray.100", "gray.800"),
     },
-    cyan = {
-      "300-600": useColorModeValue("cyan.300", "cyan.600"),
+    blue = {
+      "300-600": useColorModeValue("blue.300", "blue.600"),
     };
 
   return (
@@ -105,7 +105,7 @@ const Home: NextPage = (): JSX.Element => {
                   variant: "none",
                   mr: 6,
                   p: 0,
-                  bgColor: cyan["300-600"],
+                  bgColor: blue["300-600"],
                 }}
               />
 

@@ -44,8 +44,8 @@ export const MacaMenu: FC<MacaMenuProps> = ({
   menuItemProps,
   menuItemList,
 }: MacaMenuProps) => {
-  const cyan = {
-      "300-600": useColorModeValue("cyan.300", "cyan.600"),
+  const blue = {
+      "300-600": useColorModeValue("blue.300", "blue.600"),
     },
     gray = {
       "50-900": useColorModeValue("gray.50", "gray.900"),
@@ -66,7 +66,7 @@ export const MacaMenu: FC<MacaMenuProps> = ({
           rounded={12}
           p={0}
           _hover={{
-            bgColor: cyan["300-600"],
+            bgColor: blue["300-600"],
             shadow: "md",
           }}
           variant="ghost"
@@ -86,7 +86,7 @@ export const MacaMenu: FC<MacaMenuProps> = ({
           rounded={12}
           variant="ghost"
           _hover={{
-            bgColor: cyan["300-600"],
+            bgColor: blue["300-600"],
             shadow: "md",
           }}
         />
@@ -106,7 +106,7 @@ export const MacaMenu: FC<MacaMenuProps> = ({
             rounded={12}
             _hover={{
               shadow: "md",
-              bgColor: cyan["300-600"],
+              bgColor: blue["300-600"],
             }}
             _focus={{
               bgColor: "none",

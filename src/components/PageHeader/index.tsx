@@ -62,10 +62,10 @@ export const PageHeader: FC<PageHeaderProps> = ({
     router = useRouter(),
     { colorMode, toggleColorMode } = useColorMode();
 
-  const cyan = {
-      "300-600": useColorModeValue("cyan.300", "cyan.600"),
-      "200-800": useColorModeValue("cyan.200", "cyan.800"),
-      "400-500": useColorModeValue("cyan.400", "cyan.500"),
+  const blue = {
+      "300-600": useColorModeValue("blue.300", "blue.600"),
+      "200-800": useColorModeValue("blue.200", "blue.800"),
+      "400-500": useColorModeValue("blue.400", "blue.500"),
     },
     gray = {
       "100-800": useColorModeValue("gray.100", "gray.800"),
@@ -139,7 +139,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
             {pageHeaderTitle !== "Dashboard" ? (
               <Badge
                 shadow="md"
-                colorScheme="cyan"
+                colorScheme="blue"
                 pos="absolute"
                 top={0}
                 right={0}
@@ -181,9 +181,9 @@ export const PageHeader: FC<PageHeaderProps> = ({
               shadow: "md",
               type: buttonType,
               disabled: isLoading,
-              bgColor: cyan["300-600"],
+              bgColor: blue["300-600"],
               _hover: {
-                bgColor: isLoading ? "" : cyan["200-800"],
+                bgColor: isLoading ? "" : blue["200-800"],
               },
               w: {
                 base: "max",
@@ -252,7 +252,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
                 p: 0,
                 variant: "ghost",
                 _hover: {
-                  bgColor: cyan["300-600"],
+                  bgColor: blue["300-600"],
                   shadow: "md",
                 },
                 onClick: onClose,
@@ -327,7 +327,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
           </ModalBody>
 
           <ModalFooter p={4} justifyContent="center">
-            <Code colorScheme="cyan" rounded={6} px={2} py={0.5} shadow="md">
+            <Code colorScheme="blue" rounded={6} px={2} py={0.5} shadow="md">
               version 2.1
             </Code>
           </ModalFooter>

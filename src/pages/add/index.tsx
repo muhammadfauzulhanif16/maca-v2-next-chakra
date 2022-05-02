@@ -46,8 +46,8 @@ const Add: FC<{}> = (): JSX.Element => {
     is_completed: false,
   };
 
-  const cyan = {
-      "400-500": useColorModeValue("cyan.400", "cyan.500"),
+  const blue = {
+      "400-500": useColorModeValue("blue.400", "blue.500"),
     },
     red = {
       "400-500": useColorModeValue("red.400", "red.500"),
@@ -125,7 +125,7 @@ const Add: FC<{}> = (): JSX.Element => {
                         placeholder=" "
                         {...field}
                         variant="flushed"
-                        focusBorderColor={cyan["400-500"]}
+                        focusBorderColor={blue["400-500"]}
                         errorBorderColor={red["400-500"]}
                         borderColor={gray["400-500"]}
                       />
@@ -162,7 +162,7 @@ const Add: FC<{}> = (): JSX.Element => {
                         placeholder=" "
                         {...field}
                         variant="flushed"
-                        focusBorderColor={cyan["400-500"]}
+                        focusBorderColor={blue["400-500"]}
                         errorBorderColor={red["400-500"]}
                         borderColor={gray["400-500"]}
                       />
@@ -200,7 +200,7 @@ const Add: FC<{}> = (): JSX.Element => {
                         {...field}
                         type="month"
                         variant="flushed"
-                        focusBorderColor={cyan["400-500"]}
+                        focusBorderColor={blue["400-500"]}
                         errorBorderColor={red["400-500"]}
                         borderColor={gray["400-500"]}
                       />

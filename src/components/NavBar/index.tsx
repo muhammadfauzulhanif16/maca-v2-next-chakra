@@ -43,8 +43,8 @@ export const NavBar: FC<NavBarProps> = ({
     router = useRouter(),
     { colorMode, toggleColorMode } = useColorMode();
 
-  const cyan = {
-      "300-600": useColorModeValue("cyan.300", "cyan.600"),
+  const blue = {
+      "300-600": useColorModeValue("blue.300", "blue.600"),
     },
     gray = {
       "100-800": useColorModeValue("gray.100", "gray.800"),
@@ -102,10 +102,10 @@ export const NavBar: FC<NavBarProps> = ({
                   shadow: title === titlePage ? "md" : "",
                   variant: "ghost",
                   _hover: {
-                    bgColor: cyan["300-600"],
+                    bgColor: blue["300-600"],
                     shadow: "md",
                   },
-                  bgColor: title === titlePage ? cyan["300-600"] : "",
+                  bgColor: title === titlePage ? blue["300-600"] : "",
                   onClick: () =>
                     router.push(
                       `/${
@@ -183,9 +183,9 @@ export const NavBar: FC<NavBarProps> = ({
               variant: "ghost",
               _hover: {
                 shadow: "md",
-                bgColor: cyan["300-600"],
+                bgColor: blue["300-600"],
               },
-              bgColor: title === titlePage ? cyan["300-600"] : "",
+              bgColor: title === titlePage ? blue["300-600"] : "",
               onClick: () =>
                 router.push(
                   title === "Dashboard" ? "/" : `/${title.toLowerCase()}`
@@ -230,7 +230,7 @@ export const NavBar: FC<NavBarProps> = ({
                 p: 0,
                 variant: "ghost",
                 _hover: {
-                  bgColor: cyan["300-600"],
+                  bgColor: blue["300-600"],
                   shadow: "md",
                 },
                 onClick: onClose,
@@ -305,7 +305,7 @@ export const NavBar: FC<NavBarProps> = ({
           </ModalBody>
 
           <ModalFooter p={4} justifyContent="center">
-            <Code colorScheme="cyan" rounded={6} px={2} py={0.5} shadow="md">
+            <Code colorScheme="blue" rounded={6} px={2} py={0.5} shadow="md">
               version 2.1
             </Code>
           </ModalFooter>

@@ -6,8 +6,8 @@ import { ButtonProps, useColorModeValue } from "@chakra-ui/react";
 
 export const Logo: FC<{}> = (): JSX.Element => {
   const router = useRouter(),
-    cyan = {
-      "400-500": useColorModeValue("cyan.400", "cyan.500"),
+    blue = {
+      "300-600": useColorModeValue("blue.300", "blue.600"),
     };
 
   return (
@@ -19,7 +19,7 @@ export const Logo: FC<{}> = (): JSX.Element => {
       }}
       buttonProps={{
         h: "full",
-        color: cyan["400-500"],
+        color: blue["300-600"],
         variant: "none",
         onClick: () => router.push("/"),
       }}
