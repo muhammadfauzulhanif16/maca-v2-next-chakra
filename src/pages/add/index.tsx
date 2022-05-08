@@ -227,6 +227,9 @@ const Add: FC<{}> = (): JSX.Element => {
                     <FormControl>
                       <Flex>
                         <Checkbox
+                          __css={{
+                            color: "red.400",
+                          }}
                           variant="rounded"
                           id="is_completed"
                           name="is_completed"

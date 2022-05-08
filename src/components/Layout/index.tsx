@@ -84,7 +84,7 @@ export const Layout: FC<LayoutProps> = ({
       </Box>
 
       <Grid
-        m={{
+        p={{
           base: 0,
           lg: 12,
         }}

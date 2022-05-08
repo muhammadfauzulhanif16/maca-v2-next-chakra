@@ -28,10 +28,10 @@ export const theme = extendTheme({
               my: 2,
               transformOrigin: "left top",
               _light: {
-                bgColor: "gray.50",
+                bgColor: "neutral.50",
               },
               _dark: {
-                bgColor: "gray.900",
+                bgColor: "neutral.900",
               },
             },
           },
