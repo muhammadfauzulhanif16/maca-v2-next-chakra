@@ -47,8 +47,8 @@ export const MacaMenu: FC<MacaMenuProps> = ({
   const blue = {
       "300-600": useColorModeValue("blue.300", "blue.600"),
     },
-    gray = {
-      "50-900": useColorModeValue("gray.50", "gray.900"),
+    neutral = {
+      "50-900": useColorModeValue("neutral.50", "neutral.900"),
     };
 
   return (
@@ -95,7 +95,7 @@ export const MacaMenu: FC<MacaMenuProps> = ({
       <MenuList
         {...menuListProps}
         rounded={12}
-        bgColor={gray["50-900"]}
+        bgColor={neutral["50-900"]}
         shadow="md"
         border={0}
       >

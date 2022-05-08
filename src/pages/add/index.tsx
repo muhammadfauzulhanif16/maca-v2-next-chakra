@@ -52,8 +52,8 @@ const Add: FC<{}> = (): JSX.Element => {
     red = {
       "400-500": useColorModeValue("red.400", "red.500"),
     },
-    gray = {
-      "400-500": useColorModeValue("gray.400", "gray.500"),
+    neutral = {
+      "400-500": useColorModeValue("neutral.400", "neutral.500"),
     };
 
   return (
@@ -127,7 +127,7 @@ const Add: FC<{}> = (): JSX.Element => {
                         variant="flushed"
                         focusBorderColor={blue["400-500"]}
                         errorBorderColor={red["400-500"]}
-                        borderColor={gray["400-500"]}
+                        borderColor={neutral["400-500"]}
                       />
 
                       <FormLabel htmlFor="title">Title</FormLabel>
@@ -164,7 +164,7 @@ const Add: FC<{}> = (): JSX.Element => {
                         variant="flushed"
                         focusBorderColor={blue["400-500"]}
                         errorBorderColor={red["400-500"]}
-                        borderColor={gray["400-500"]}
+                        borderColor={neutral["400-500"]}
                       />
 
                       <FormLabel htmlFor="author">Author</FormLabel>
@@ -202,7 +202,7 @@ const Add: FC<{}> = (): JSX.Element => {
                         variant="flushed"
                         focusBorderColor={blue["400-500"]}
                         errorBorderColor={red["400-500"]}
-                        borderColor={gray["400-500"]}
+                        borderColor={neutral["400-500"]}
                       />
 
                       <FormLabel htmlFor="published">Published</FormLabel>

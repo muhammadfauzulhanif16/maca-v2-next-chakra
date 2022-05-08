@@ -49,9 +49,9 @@ export const Layout: FC<LayoutProps> = ({
 }: LayoutProps): JSX.Element => {
   const { colorMode } = useColorMode();
 
-  const gray = {
-      "50-900": useColorModeValue("gray.50", "gray.900"),
-      "900-50": useColorModeValue("gray.900", "gray.50"),
+  const neutral = {
+      "50-900": useColorModeValue("neutral.50", "neutral.900"),
+      "900-50": useColorModeValue("neutral.900", "neutral.50"),
     },
     blue = {
       "300-600": useColorModeValue("blue.300", "blue.600"),
@@ -62,8 +62,8 @@ export const Layout: FC<LayoutProps> = ({
 
   return (
     <Flex
-      bgColor={gray["50-900"]}
-      color={gray["900-50"]}
+      bgColor={neutral["50-900"]}
+      color={neutral["900-50"]}
       h="100vh"
       userSelect="none"
     >

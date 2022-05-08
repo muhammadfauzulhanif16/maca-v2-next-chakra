@@ -55,8 +55,8 @@ const Home: NextPage = (): JSX.Element => {
     },
   ];
 
-  const gray = {
-      "100-800": useColorModeValue("gray.100", "gray.800"),
+  const neutral = {
+      "100-800": useColorModeValue("neutral.100", "neutral.800"),
     },
     blue = {
       "300-600": useColorModeValue("blue.300", "blue.600"),
@@ -86,7 +86,7 @@ const Home: NextPage = (): JSX.Element => {
           ({ icon, label, amount }: Overview, id: number): JSX.Element => (
             <GridItem
               key={id}
-              bgColor={gray["100-800"]}
+              bgColor={neutral["100-800"]}
               p={6}
               rounded={16}
               display="flex"

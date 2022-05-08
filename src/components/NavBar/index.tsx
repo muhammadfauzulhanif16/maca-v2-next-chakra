@@ -46,14 +46,14 @@ export const NavBar: FC<NavBarProps> = ({
   const blue = {
       "300-600": useColorModeValue("blue.300", "blue.600"),
     },
-    gray = {
-      "100-800": useColorModeValue("gray.100", "gray.800"),
-      "50-900": useColorModeValue("gray.50", "gray.900"),
+    neutral = {
+      "100-800": useColorModeValue("neutral.100", "neutral.800"),
+      "50-900": useColorModeValue("neutral.50", "neutral.900"),
     };
 
   return (
     <Box
-      bgColor={gray["50-900"]}
+      bgColor={neutral["50-900"]}
       h={{
         base: "max",
         lg: "100vh",
@@ -204,7 +204,7 @@ export const NavBar: FC<NavBarProps> = ({
         <ModalOverlay />
 
         <ModalContent
-          bgColor={gray["100-800"]}
+          bgColor={neutral["100-800"]}
           shadow="md"
           rounded={16}
           m={4}

@@ -55,9 +55,9 @@ export const Shelf: FC<ShelfProps> = ({
       useUpdateStatusBookMutation(),
     [deleteBook, { isLoading: isDeleting }] = useDeleteBookMutation();
 
-  const gray = {
-      "50-900": useColorModeValue("gray.50", "gray.900"),
-      "400-500": useColorModeValue("gray.400", "gray.500"),
+  const neutral = {
+      "50-900": useColorModeValue("neutral.50", "neutral.900"),
+      "400-500": useColorModeValue("neutral.400", "neutral.500"),
     },
     red = {
       "400-500": useColorModeValue("red.400", "red.500"),
@@ -151,7 +151,7 @@ export const Shelf: FC<ShelfProps> = ({
             h: 12,
           }}
           buttonProps={{
-            color: gray["400-500"],
+            color: neutral["400-500"],
             w: "full",
             h: "full",
             display: "flex",
@@ -183,7 +183,7 @@ export const Shelf: FC<ShelfProps> = ({
                 <Thead
                   position="sticky"
                   top={0}
-                  bgColor={gray["50-900"]}
+                  bgColor={neutral["50-900"]}
                   zIndex={2}
                   my={2}
                 >
@@ -314,7 +314,7 @@ export const Shelf: FC<ShelfProps> = ({
                 h: 12,
               }}
               buttonProps={{
-                color: gray["400-500"],
+                color: neutral["400-500"],
                 w: "full",
                 h: "full",
                 display: "flex",

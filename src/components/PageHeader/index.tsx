@@ -67,16 +67,16 @@ export const PageHeader: FC<PageHeaderProps> = ({
       "200-800": useColorModeValue("blue.200", "blue.800"),
       "400-500": useColorModeValue("blue.400", "blue.500"),
     },
-    gray = {
-      "100-800": useColorModeValue("gray.100", "gray.800"),
-      "400-500": useColorModeValue("gray.400", "gray.500"),
+    neutral = {
+      "100-800": useColorModeValue("neutral.100", "neutral.800"),
+      "400-500": useColorModeValue("neutral.400", "neutral.500"),
     };
 
   return (
     <GridItem>
       <Box
         borderBottomWidth={2}
-        borderBottomColor={gray["100-800"]}
+        borderBottomColor={neutral["100-800"]}
         display={{
           base: "block",
           lg: "none",
@@ -151,7 +151,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
             ) : null}
           </Box>
 
-          <Text color={gray["400-500"]}>{description}</Text>
+          <Text color={neutral["400-500"]}>{description}</Text>
         </Box>
 
         <Grid
@@ -226,7 +226,7 @@ export const PageHeader: FC<PageHeaderProps> = ({
         <ModalOverlay />
 
         <ModalContent
-          bgColor={gray["100-800"]}
+          bgColor={neutral["100-800"]}
           shadow="md"
           rounded={16}
           m={4}

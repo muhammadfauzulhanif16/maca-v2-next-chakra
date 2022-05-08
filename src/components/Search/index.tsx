@@ -27,8 +27,8 @@ export const Search: FC<SearchProps> = ({
     "200-800": useColorModeValue("blue.200", "blue.800"),
   };
 
-  const gray = {
-    "50-900": useColorModeValue("gray.50", "gray.900"),
+  const neutral = {
+    "50-900": useColorModeValue("neutral.50", "neutral.900"),
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -87,7 +87,12 @@ export const Search: FC<SearchProps> = ({
       >
         <ModalOverlay />
 
-        <ModalContent rounded={12} m={4} shadow="md" bgColor={gray["50-900"]}>
+        <ModalContent
+          rounded={12}
+          m={4}
+          shadow="md"
+          bgColor={neutral["50-900"]}
+        >
           <ModalBody p={2} display="flex">
             <IconButton
               as={BookSearch}
